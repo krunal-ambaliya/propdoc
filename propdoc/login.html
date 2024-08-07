@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./script/appconst.js"></script>
+    <script src="./script/script.js"></script>
+    <script type="text/javascript">
+        getjwtToken(true);
+    </script>
+    <link rel="stylesheet" href="css/normal.css">
+    <style>
+        .container {
+            grid-template-columns: 55% 45%;
+        }
+
+        .info p {
+            max-width: 60%;
+        }
+
+        @media (max-width:800px) {
+            .container {
+                display: flex;
+
+            }
+
+            .right {
+                background-color: #F7F9FF;
+            }
+
+            .left {
+                display: none;
+            }
+        }
+
+
+
+        @media (max-width:500px) {
+
+            input {
+                margin-top: 0.4rem;
+            }
+
+            .container {
+                display: flex;
+            }
+
+            .left {
+                display: none;
+            }
+
+            .right {
+                width: unset;
+            }
+
+            .form-container {
+                max-width: 100%;
+            }
+
+            .heading-frm {
+                max-width: unset;
+            }
+
+            .logo {
+                width: 85%;
+                max-width: 19rem;
+            }
+
+            .heading-frm h2 {
+                font-size: 1.5rem;
+            }
+
+            .heading-frm p {
+                font-size: 0.9rem;
+                color: #676767;
+                font-weight: 600;
+            }
+
+            .frm-label {
+                font-size: 1rem;
+            }
+
+            ::placeholder {
+                font-size: 0.7rem;
+                font-weight: 600;
+            }
+
+
+            .centerPlaceholder {
+                font-size: 0.8rem;
+            }
+
+            button.sign-in.btn-color {
+                height: 2.6rem;
+                font-size: 1.2rem;
+            }
+
+            button.google-login {
+                height: 2.6rem;
+                font-size: 1.2rem;
+            }
+
+            .signup {
+                padding: 0.75rem 0 0 0;
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+
+            a.forgot-password {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+        }
+    </style>
+    <style>
+        .heading-frm p {
+            font-weight: 700;
+        }
+
+        .heading-frm h2 {
+            font-size: 1.2rem;
+        }
+
+        .logo {
+            padding-top: 2.25%;
+            width: 100%;
+            max-width: 15rem;
+            margin-bottom: 6.75%;
+        }
+
+        .frm-label {
+            font-weight: 700;
+        }
+
+        input::placeholder {
+            font-family: 'nunito';
+            font-weight: 650;
+            color: #676767;
+        }
+
+        #password::placeholder {
+            font-family: 'nunito';
+            font-weight: 650;
+            color: #676767;
+        }
+
+        .forgot-password {
+            font-weight: 700;
+        }
+
+        .form-container {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .right {
+            padding-right: 0;
+            padding: 3.75%;
+        }
+
+        .form-container {
+            max-width: 22rem;
+        }
+
+        .signup a {
+            font-weight: 600;
+        }
+
+        .signup span {
+            color: var(--light-black);
+            font-family: 'nunito';
+            font-weight: 550;
+        }
+
+        .error-msg {
+            text-align: left;
+            color: red;
+            font-size: 0.8rem;
+        }
+    </style>
+    <!-- loader inside button -->
+    <style>
+        /* Loader styling */
+        #spinner {
+            border: 3px solid white;
+            /* Light grey */
+            border-radius: 50%;
+            border-top: 3px solid transparent;
+            /* Blue */
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            /* margin-left: 10px; */
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cenetrLoader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <!-- <script>
+        function handleLogin(event) {
+            
+            // add loader 
+            const button = document.getElementById('SignInButton')
+            button.innerHTML = '<span id="spinner"></span>';
+            button.disabled = true
+            button.classList.add('cenetrLoader')
+
+            $.ajax({
+                url: apiUrl + 'login',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ email: email, password: password, "captcha_token": "string" }),
+                success: function (response) {
+                    console.log(response);
+                    if (response.success) {
+                        localStorage.setItem('jwtToken', response.data.token);
+
+
+                        setTimeout(function () {
+                            window.location.href = "index.html";
+                        }, 2000);
+
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                },
+                complete: function () {
+                    button.innerHTML = 'Sign up';
+                    button.disabled = false
+                    button.classList.remove('cenetrLoader')
+                }
+
+            });
+        }
+    </script> -->
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="./images/login_desk.svg" alt="Login Illustration">
+            <div class="info">
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Morbi lacus ut netus natoque vel dui lectus felis lacus.
+                    Felis tellus tortor sagittis.</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="form-container">
+                <div class="heading-frm">
+                    <img src="images/procdoc_logo.svg" alt="Procdoc Logo" class="logo">
+                    <h2>Welcome Back <span> <img src="./images/hand.png" alt="" class="hand-wave"></span></h2>
+                    <p>Enter your details below to login</p>
+                </div>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-grp">
+
+                        <label class="frm-label" for="email">Email</label>
+                        <input style="margin-bottom: 1.25px;" type="email" id="email" name="email"
+                            placeholder="johndoe@gmail.com" required>
+                        <div style="margin-bottom: 10px;" id="emailError" class="error-msg"></div>
+                    </div>
+
+                    <div class="form-grp">
+                    <label class="frm-label" for="password">Password</label>
+                    <input class="centerPlaceholder" type="password" id="password" name="password"
+                        placeholder="***********" required style="margin-bottom: 1.25px;">
+                    <div style="margin-bottom: 10px;" id="PasswordError" class="error-msg"></div>
+                   </div>
+
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+
+                    <button type="submit" class="sign-in btn-color cenetrLoader" id="SignInButton">
+                        Sign in
+                    </button>
+
+                    <button class="google-login">
+                        <img src="images/google_logo.svg" alt="Google Logo">
+                        Login with Google
+                    </button>
+                </form>
+                <p class="signup"> <span> Don't have an account? </span> <a href="signup.html">Signup</a></p>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

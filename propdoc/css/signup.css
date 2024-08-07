@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    --primary: #4154F1;
+    --dark: #161616;
+    --pure: #ffffff;
+    --p_light: #F7F9FF;
+    --L-light-black: #012970;
+    --light-black: #676767;
+    --height-btn: 2.25rem;
+    /* 3rem * 0.75 */
+    --f-weight: 700;
+    /* 700 * 0.75 */
+    --f-size-12: 63%;
+    /* 84% * 0.75 */
+    --f-size-13: 64.5%;
+    /* 86% * 0.75 */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Nunito";
+    font-size: 0.75rem;
+    /* 1rem * 0.75 */
+    font-weight: 400;
+    /* 400 * 0.75 */
+    line-height: 1.125;
+    /* 1.5 * 0.75 */
+    color: #212529;
+    text-align: left;
+    background-color: var(--p_light);
+    position: relative;
+}
+
+.logo-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 2.25%;
+    /* 3% * 0.75 */
+}
+
+.logo {
+    height: 38.25px;
+    /* 51px * 0.75 */
+}
+
+.heading-frm {
+    text-align: center;
+    margin-top: 7.5px;
+    /* 10px * 0.75 */
+}
+
+.heading-frm h2 {
+    font-size: 21px;
+    /* 28px * 0.75 */
+    margin-top: 1.5%;
+    /* 2% * 0.75 */
+    margin-bottom: 7.5px;
+    /* 10px * 0.75 */
+}
+
+.heading-frm p {
+    color: var(--L-light-black);
+    font-weight: var(--f-weight);
+    font-size: 94%;
+    /* 94% * 0.75 */
+    margin-bottom: 45px;
+    /* 60px * 0.75 */
+}
+
+.container {
+    display: flex;
+    min-height: 37.5%;
+    /* 50% * 0.75 */
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 41.25rem;
+    /* 55rem * 0.75 */
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-top: 12px;
+    /* 16px * 0.75 */
+    font-size: 21px;
+    /* 28px * 0.75 */
+    margin-bottom: 4.5px;
+    /* 6px * 0.75 */
+}
+
+h2 span {
+    font-size: 21px;
+    /* 28px * 0.75 */
+}
+
+p {
+    font-size: 11.25px;
+    /* 15px * 0.75 */
+    color: #666;
+    margin-bottom: 15px;
+    /* 20px * 0.75 */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 3.75px;
+    /* 5px * 0.75 */
+    font-size: 14px;
+    /* 14px * 0.75 */
+    color: #333;
+    float: left;
+}
+
+input {
+    padding-left: 2.25%;
+    /* 3% * 0.75 */
+    width: 100%;
+    height: var(--height-btn);
+    border: 1px solid #ccc;
+    border-radius: 6.75px;
+    /* 9px * 0.75 */
+
+}
+
+.forgot-password {
+    text-align: right;
+    width: 100%;
+    margin-bottom: 15px;
+    /* 20px * 0.75 */
+    color: #007bff;
+    text-decoration: none;
+}
+
+.submit {
+    margin-top: 3%;
+    /* 4% * 0.75 */
+    font-weight: var(--f-weight);
+    font-family: 'nunito';
+    width: 37.5%;
+    /* 50% * 0.75 */
+    height: var(--height-btn);
+    border: none;
+    border-radius: 9px;
+    /* 12px * 0.75 */
+    font-size: 12px;
+    /* 16px * 0.75 */
+    cursor: pointer;
+}
+
+.btn-color {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #0d6efd;
+    --bs-btn-border-color: #0d6efd;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
+}
+
+.submit:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color);
+}
+
+.submit {
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: var(--primary);
+}
+
+.signin {
+    font-weight: var(--f-weight);
+    font-size: 12px;
+    /* 16px * 0.75 */
+    color: #666;
+    padding: 1.5rem 0 0 0;
+    /* 2rem * 0.75 */
+}
+
+.signin a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.heading-frm {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.sf-label {
+    color: var(--light-black);
+    font-size: 96%;
+    /* 96% * 0.75 */
+    font-weight: var(--f-weight);
+}
+
+
+.form-col {
+    flex: 1;
+    margin: 0 7.5px;
+    /* 10px * 0.75 */
+    min-width: 33.75%;
+    /* 45% * 0.75 */
+    margin-bottom: 15px;
+}
+
+.form-col:first-child {
+    margin-left: 0;
+}
+
+.form-col:last-child {
+    margin-right: 0;
+}
+
+@media (max-width: 768px) {
+    .heading-frm h2 {
+        font-size: 17.25px;
+        /* 23px * 0.75 */
+    }
+
+    .heading-frm p {
+        font-weight: 700;
+        font-size: 80%;
+        padding: 0 2.25%;
+        margin-bottom: 2.25%;
+    }
+
+    .logo-container {
+        margin-top: 4.5%;
+        /* 6% * 0.75 */
+    }
+
+    .logo {
+        width: 100%;
+        max-width: 14.25rem;
+        /* 19rem * 0.75 */
+    }
+
+    .form-container {
+        width: 100%;
+    }
+
+    .sf-label {
+        padding-left: 2.25%;
+        /* 3% * 0.75 */
+        margin-bottom: 2px;
+    }
+
+    .signin {
+        border-radius: 6.75px;
+        /* 9px * 0.75 */
+        padding-top: 5.25%;
+        /* 7% * 0.75 */
+    }
+
+    .submit {
+        border-radius: 4.5px;
+        /* 6px * 0.75 */
+        width: 75%;
+        /* 100% * 0.75 */
+        height: 1.8rem;
+        /* 2.4rem * 0.75 */
+        margin-top: 3.75%;
+        /* 5% * 0.75 */
+    }
+
+    input {
+        border-radius: 4.5px;
+        /* 6px * 0.75 */
+        height: 1.8rem;
+        /* 2.4rem * 0.75 */
+        margin-bottom: 2.25%;
+        /* 3% * 0.75 */
+    }
+
+    .form-container {
+        padding: 15px;
+        /* 20px * 0.75 */
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-col {
+        width: 100%;
+        margin: 0;
+    }
+
+}
+
+.error-msg {
+    text-align: left;
+    color: red;
+    font-size: 0.8rem;
+}

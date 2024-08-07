@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My jobs</title>
+  <link rel="stylesheet" href="css/main2.css">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/normal.css">
+  <!-- Vendor JS Files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./script/appconst.js"></script>
+  <script src="./script/script.js"></script>
+  <script type="text/javascript">
+   getjwtToken(true);
+  </script>
+  <style>
+    .search-bar,
+    .searchIcon {
+      visibility: hidden;
+    }
+
+    .service-name-job,
+    .status-completed,
+    .status-pending {
+      font-weight: 600;
+    }
+
+    body {
+      background-color: #F7F9FF;
+    }
+
+    .property-card {
+      margin: 1.5px 1.5px 1.275% 1.5px;
+      padding: 0.5% 0.75%;
+    }
+
+    .property-name img {
+      width: clamp(0.578rem, -1.3125rem + 1.225vw, 1.838rem);
+      margin-top: -0.1rem;
+      font-weight: 700;
+    }
+
+    .pagetitle {
+
+
+      margin-bottom: 0.75rem;
+      margin-top: 0.28%;
+      margin-left: 1.4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* margin-right: 1.17%; */
+    }
+
+    .padding-bottom-jobs {
+      padding-bottom: 11.4px;
+    }
+
+    .button-container {
+      display: flex;
+      align-items: center;
+      /* Center the button vertically */
+    }
+
+    .add-properties-button {
+
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 7.5px 1.4rem;
+      font-size: 10.5px;
+      cursor: pointer;
+      border-radius: 4.5px;
+      font-family: 'nunito';
+      font-weight: 650;
+      font-size: 0.7rem;
+      border-radius: 4.5px;
+      /* Reduced by 25% from 6px */
+    }
+
+
+    /* .add-properties-button:hover {
+      border: 1.5px solid #4154F1;
+      background-color: transparent;
+      color: #012970;
+      font-weight: 600;
+    } */
+
+    /* .button-container {
+      display: block;
+    } */
+
+    .button-container2 {
+      display: none;
+    }
+
+    .footer-date {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+
+    .footer-date img {
+      margin: 0;
+    }
+
+    .footer-time {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+
+    .footer-time img {
+      margin: 0;
+    }
+
+    .footer-currency {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+
+    .footer-currency img {
+      margin: 0;
+    }
+
+    .footer-icon {
+      margin-bottom: auto;
+    }
+
+    .property-card-header {
+      border-bottom: 1px dashed #4154F1;
+    }
+
+    /* Media query for responsive design */
+    @media (max-width:992px) {
+
+      .property-card-header {
+        gap: 0.4rem;
+      }
+
+      .pagetitle h1 {
+        font-size: 20px;
+      }
+
+      .property-card {
+        margin-top: 0.1rem;
+      }
+
+      .pagetitle {
+        padding-left: 0 0.5%;
+        align-items: center;
+      }
+
+      .button-container {
+        display: none;
+      }
+
+      .button-container2 {
+        display: block;
+        /* margin-right: 1%; */
+      }
+
+      .property-card {
+        /* width: 97%; */
+        margin: 2% 0.5%;
+        padding: 15px;
+        margin-top: 0.2rem;
+      }
+
+      .property-card-header,
+      .property-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-left {
+
+        align-items: flex-start;
+      }
+
+      .footer-right {
+        margin-left: 0;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .footer-right>div {
+        margin-left: 0;
+        margin-top: 10px;
+        /* width: 100%; */
+        justify-content: space-between;
+      }
+
+
+      /* .service-name-job { */
+      /* margin-right: 3rem; */
+      /* } */
+
+      .service-status {
+        /* display: flex; */
+        /* align-items: center; */
+        justify-content: space-evenly;
+        /* white-space: nowrap; */
+        margin-right: 0;
+      }
+    }
+
+    @media (min-width: 500px) and (max-width: 750px) {
+      .footer-right {
+        width: 100%;
+      }
+    }
+
+    .agent-only,
+    .trader-only {
+      display: none;
+    }
+
+    .arrow-icon-accordian-2 {
+      transition: transform 0.3s;
+      transform: rotate(270deg);
+
+      margin-right: 1%;
+    }
+
+    .arrow-icon-accordian-2.rotated {
+      transform: rotate(360deg);
+    }
+
+
+    /* ----------- changes  --------  */
+
+    .sub-property-name {
+      color: #012970 !important;
+
+    }
+
+    .sub-property-name {
+      color: #012970 !important;
+    }
+
+    .address-text {
+      color: #555;
+      font-weight: 600;
+    }
+
+    .footer-icon.user-name-down {
+      display: none;
+    }
+
+    .status-overdue {
+      font-size: 0.6rem;
+      background-color: #FF9C9C;
+      color: #1A2130;
+      padding: 3.75px 7.5px;
+      border-radius: 15px;
+      font-weight: 525;
+    }
+
+
+    @media (max-width:750px) {
+      .admin-agent-trader-middle {
+        display: block;
+      }
+
+      .footer-time {
+        display: none;
+      }
+
+      .admin-agent-trader {
+        margin-bottom: 2%;
+      }
+
+      .admin-middle-right {
+        justify-content: start;
+      }
+
+      .service-status {
+        margin-top: 0;
+      }
+
+    }
+
+    /* for mobile view */
+
+    @media(max-width:500px) {
+      .pagetitle {
+        margin-top: unset;
+        padding: 0 0.5rem;
+      }
+
+      .property-card {
+        margin: 2% 0.5rem;
+        margin-bottom: 0.8rem;
+      }
+
+
+      .service-name-job,
+      .status-completed {
+        padding: 3px 6px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        margin-right: unset;
+      }
+
+      .status-overdue {
+        padding: 3px 6px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        margin-right: unset;
+      }
+
+
+
+      .service-status {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 2%;
+      }
+
+      .footer-left,
+      .footer-right {
+        flex-direction: unset;
+        align-items: flex-start;
+      }
+
+      .footer-time-agent {
+        display: none !important;
+
+      }
+
+      .footer-right>div {
+        width: unset;
+      }
+
+      .footer-right {
+        display: flex;
+        justify-content: space-between;
+        /* width: 100%; */
+        flex-wrap: wrap;
+      }
+
+      .property-card {
+        padding: 2px 10px;
+      }
+
+      .accordian-bottom {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .footer-icon.user-name-down {
+
+
+        visibility: visible;
+        display: block;
+      }
+
+      .admin-middle-right {
+        /* gap: 0.5px;  */
+        justify-content: start;
+        flex-wrap: wrap;
+      }
+
+      .admin-agent-trader {
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+    }
+
+    .comment-icon {
+      width: 0.8rem;
+      /* height: 0.8rem; */
+      margin-top: 0.1rem;
+    }
+
+    /* .property-name {
+    display: flex;
+} */
+
+
+    .p-flex {
+
+      display: flex;
+      align-items: center;
+    }
+
+    /* scroll */
+    #agentJobs {
+      max-height: 73.6vh;
+      overflow-y: auto;
+    }
+
+    #agentJobs::-webkit-scrollbar {
+      width: 0;
+      /* Set the width of the scrollbar */
+    }
+
+    @media (max-width: 992px) {
+      .add-properties-button {
+        padding: 0px 12px;
+        font-size: 28px;
+      }
+
+      .pagetitle {
+        padding: 0 0.5%;
+      }
+    }
+
+    @media (max-width:550px) {
+      #main-content {
+        margin-top: 3.4rem;
+      }
+    }
+
+    .property-card-header {
+      align-items: flex-start;
+    }
+
+    .property-name {
+      font-size: 0.75rem;
+    }
+
+    .sub-property-name {
+      font-size: 0.7rem;
+      font-weight: 650;
+    }
+
+    .address-text {
+      font-size: 0.6rem;
+    }
+
+    .service-name-job,
+    .status-completed,
+    .status-pending {
+      font-weight: bold;
+      font-size: 0.65rem;
+    }
+
+    .footer-date span,
+    .footer-time span,
+    .footer-currency span {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    @media (min-width:992px) {
+      .footer-right>div {
+        margin-left: 2rem;
+      }
+    }
+
+    @media (max-width:500px) {
+      .property-name {
+        font-size: 0.7rem;
+      }
+
+      .sub-property-name {
+        font-size: 0.65rem;
+        font-weight: 550;
+      }
+
+      .address-text {
+        font-size: 0.7rem;
+      }
+
+      .service-name-job,
+      .status-completed,
+      .status-pending {
+        font-weight: 600;
+        font-size: 0.6rem;
+      }
+
+      .footer-date span,
+      .footer-time span,
+      .footer-currency span {
+        font-weight: 500;
+        font-size: 0.77rem;
+      }
+      .footer-icon{
+        width: 0.9rem;
+        height: 0.9rem;
+      }
+      .footer-right{
+        width: 100%;
+      }
+    }
+    .ceneterNoData{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeAll();
+    });
+  </script>
+</head>
+
+<body>
+  <main id="main-content" class="main-content">
+    <div id="header-container"></div>
+    <div id="sidebar-container"></div>
+
+    <!-- ----
+    
+    agent-only-content
+    
+    --- --->
+    <div class="agent-only" id="agent" style="margin-bottom: 0.5rem; display: none;    padding: 0% 1%;">
+      <div class="pagetitle">
+        <h1>My Jobs</h1>
+        <div class="button-container">
+          <a class="add-properties-button" href="add_service_record.html">Create Job Request</a>
+
+        </div>
+        <div class="button-container2">
+          <a class="add-properties-button" href="add_service_record.html">+</a>
+
+        </div>
+      </div><!-- End Page Title -->
+
+
+      <div id="agentjobLoader">
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="agentJobs">
+
+      </div>
+
+
+    </div>
+    <!-- ----
+    
+    trader-only-content
+    
+    --- --->
+    <div class="trader-only" id="trader" style="margin-bottom: 0.5rem; display: none; padding: 0% 1%;">
+      <div class="pagetitle">
+        <h1>My Jobs</h1>
+      </div><!-- End Page Title -->
+
+
+
+      <div id="traderjobLoader">
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="traderJobs"></div>
+
+    </div>
+
+    <!-- ----
+    
+    admin-only-content
+    
+    --- --->
+    <div class="admin-only" id="admin" style="margin-bottom: 0.5rem;display: none; padding: 0% 1%;">
+      <div class="pagetitle">
+        <h1>Completed Jobs</h1>
+      </div><!-- End Page Title -->
+
+
+
+      <div id="adminjobLoader">
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="property-card">
+          <div id="tableLoader" style="margin-top: 15px;">
+            <div class="tableLoader-container">
+              <div class="tableLoader-item">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+              <div class="tableLoader-item even-tableLoader">
+                <div class="tableLoader-toggle" aria-expanded="false"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="adminJobs"></div>
+
+    </div>
+    <!-- Pagination starts -->
+
+
+
+    <div class="pagination-container" id="pagination-container" >
+      <div class="pagination-content">
+        <div class="items-per-page">
+
+          <select id="itemsPerPage" class="custom-select">
+            <option value="10">10</option>
+          </select>
+
+
+          <p></p>
+        </div>
+        <ul class="pagination">
+          <li><a href="#"><img src="./images/double_right.svg" alt="" class="pagiantion-img"></a></li>
+          <li><a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img"></a></li>
+
+
+          <li>
+            <a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img double-right-rotated"></a>
+          </li>
+          <li class="hide-on-small"><a href="#"><img src="./images/double_right.svg" alt=""
+                class="pagiantion-img double-right-rotated"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Pagination ends -->
+
+
+  </main>
+
+  <script>
+    function toggleAccordion(element) {
+      const body = element.nextElementSibling;
+      const arrowIcon = element.querySelector('.arrow-icon-accordian-2');
+
+      if (body.classList.contains('active')) {
+        body.classList.remove('active');
+        body.classList.add('inactive');
+        arrowIcon.classList.remove('rotated');
+      } else {
+        body.classList.remove('inactive');
+        body.classList.add('active');
+        arrowIcon.classList.add('rotated');
+      }
+    }
+
+
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateMyJobs();
+    });
+
+    document.getElementById('itemsPerPage').addEventListener('change', function () {
+      const itemsPerPage = parseInt(this.value);
+      updateMyJobs(1, itemsPerPage);
+    });
+  </script>
+</body>
+
+</html>

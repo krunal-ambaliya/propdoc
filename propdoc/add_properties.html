@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Properties</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="css/main2.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/add_properties.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./script/appconst.js"></script>
+  <script>
+    var imgPaths = [];
+    const DUMMY_IMAGE_SRC = 'images/preview_img.png';
+    let Deleteimagesrc;
+    let DeleteimagePrev;
+  </script>
+  <script src="./script/script.js"> </script>
+  <script type="text/javascript">
+    getjwtToken(true);
+  </script>
+  <link rel="stylesheet" href="css/normal.css">
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeAll();
+    });
+  </script>
+  <style>
+    .search-bar,
+    .searchIcon {
+      visibility: hidden;
+
+    }
+
+    .upload-section-2 {
+      padding: 1rem 1rem 2rem 1rem;
+      width: 100%;
+      background-color: #fff;
+      height: 98%;
+      border: 2px solid #F5F9FF;
+      box-shadow: 0px 0px 4px rgb(14 70 163 / 17%);
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    .upload-section-2__upload-box {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      border-radius: 8px;
+      flex-grow: 1.7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10%;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .upload-section-2__upload-icon {
+      width: 50px;
+      height: 50px;
+      background-size: contain;
+      margin: 0 auto;
+    }
+
+    .upload-section-2__file-size {
+      color: #012970;
+    }
+
+    .upload-section-2__preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .upload-section-2__preview-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 10px;
+      /* width: 95%; */
+    }
+
+    .upload-section-2__preview-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .upload-section-2__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+      pointer-events: none;
+    }
+
+    .upload-section-2__preview-item:hover .upload-section-2__overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .upload-section-2__view-icon {
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+    }
+
+    /* Mobile View */
+    @media (max-width: 750px) {
+      .button-container {
+        margin-top: 1rem;
+      }
+
+      .upload-section-2__preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 11% 1%;
+        place-items: center;
+        margin-top: 2.5%;
+
+      }
+
+      .upload-section-2__preview-item {
+        position: relative;
+        aspect-ratio: 1;
+        overflow: hidden;
+        width: 90%;
+      }
+    }
+
+    .upload-section-2__file-size-divider {
+      border-bottom: 0.125rem dashed #4154f1b3;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0 0rem 1rem 0rem;
+    }
+
+    .form-section {
+      grid-column: span 8;
+      background-color: white;
+      padding: 20px;
+      border: 2px solid #F5F9FF;
+      box-shadow: 0px 0px 4px rgb(14 70 163 / 17%);
+      border-radius: 15px;
+      box-sizing: border-box;
+    }
+
+    .upload-left {
+      grid-column: span 3;
+    }
+
+    .container {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: repeat(11, 1fr);
+      gap: 10px;
+      flex-grow: 1;
+      height: calc(100% - 5rem);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media screen and (min-width: 750px) and (max-width: 992px) {
+      .upload-section-2__preview-grid {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        height: 10rem;
+      }
+    }
+
+    .upload-selection-text {
+      font-size: 0.8rem;
+    }
+
+    img.upload-section-2__upload-img {
+      width: 3.5rem;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 50%;
+      max-width: 700px;
+    }
+
+    /* Hide the overlay icons by default */
+    .upload-section-2__overlay-icons {
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    /* Show the overlay icons on hover */
+    .upload-section-2__preview-item:hover .upload-section-2__overlay-icons {
+      display: flex;
+    }
+  </style>
+  <style>
+    .img-section {
+      max-height: 40vh;
+      overflow-y: auto;
+    }
+
+    .img-section::-webkit-scrollbar {
+      width: 0px;
+      /* Set the width of the scrollbar */
+    }
+
+
+
+    @media ((max-width:992px) and (min-width:750px)) {
+      .img-section {
+        min-height: 100%;
+        overflow-y: auto;
+      }
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 4rem;
+      /* width: 31%; */
+      height: 30%;
+
+      border-radius: 10px;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .justify-content-end {
+      margin-top: 11%;
+      gap: 26px;
+    }
+
+    @media (max-width:400px) {
+      .popup-content {
+        margin: 0 10px;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .popup-content {
+        margin: 0 10px;
+        /* padding: 1rem; */
+        height: unset;
+      }
+    }
+
+    @media (max-width:1199px) {
+      .container {
+        padding: 0 0.9rem;
+      }
+
+      .pagetitle {
+        margin-left: 0;
+        padding: 0 1rem;
+      }
+    }
+
+
+    .popup-message {
+      font-weight: 500;
+
+    }
+
+    .form-btn-reset {
+      box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+      border-color: #4154F1 !important;
+      background-color: white !important;
+      border: 1px solid #4153f170 !important;
+      color: #676767 !important;
+    }
+
+    .btn {
+      padding: 6px 35px;
+      font-style: normal;
+    }
+
+    button.btn {
+      border-radius: 8px;
+    }
+
+    .form-btn-save {
+      background-color: #4154F1 !important;
+      box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+      color: white;
+    }
+
+    .pagetitle {
+      margin-top: 0.5%;
+      margin-bottom: 0.7rem;
+      margin-left: 1.2%;
+    }
+
+    .outerSaveButton {
+      display: none;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width:992px) {
+      .outerSaveButton {
+        display: flex;
+      }
+
+      .innerSaveButton {
+        display: none;
+      }
+    }
+
+    @media (max-width:750px) {
+      /* .upload-section-2__preview-grid{
+        min-height: 20rem;
+        gap: 1% 1%;
+      }
+      .img-section{
+        max-height: 40rem;
+        min-height: 35rem;
+      }
+      .upload-section-2__preview-img{
+        height: 95%;
+      }
+      .upload-section-2{
+        padding-bottom: 0.5rem;
+      }
+      .upload-section-2{
+        width: 100%;
+      } */
+    }
+
+    input::placeholder {
+      font-family: 'nunito';
+      font-weight: 600;
+      color: #676767;
+    }
+
+    /* for image */
+    @media (max-width:750px) {
+      .upload-section-2 {
+        display: block;
+      }
+
+      .img-section {
+        max-height: 40vh;
+      }
+
+      .upload-section-2__preview-grid {
+        margin-bottom: 2.5%;
+        gap: 5%;
+      }
+
+    }
+
+    @media (max-width:550px) {
+      .upload-section-2 {
+        display: block;
+      }
+
+      .img-section {
+        max-height: 40vh;
+      }
+
+      .upload-section-2__preview-grid {
+        margin-bottom: 2.5%;
+        gap: 5%;
+      }
+
+    }
+
+    .upload-section-2__preview-grid {
+      padding: 2.5% 0;
+    }
+
+    .form-section {
+      padding-bottom: 10px;
+      height: 100%;
+    }
+
+    .upload-left,
+    .upload-section-2 {
+      height: 100%;
+    }
+
+    @media (max-width:700px) {
+      .toggle-group {
+        display: grid;
+        grid-template-columns: 47% 47%;
+      }
+
+    }
+    #SaveButtonOne,#SaveButtonTwo{
+      padding: 0;
+      width: 7.2rem !important;
+      height: 2.2rem !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main id="main-content" class="main-content">
+
+    <div class="pagetitle">
+      <div class="title-nav">
+        <h1>My Properties</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="myproperties.html">My properties / </a></li>
+
+            <li class="breadcrumb-item active">Add Properties</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- status-button -->
+      <div class="custom-toggle-item heading-button">
+        <label class="custom-switch">
+          <input type="checkbox" id="customSwitch">
+          <span class="custom-slider"></span>
+        </label>
+        <span class="custom-switch-text" id="customSwitchText">Status</span>
+      </div>
+    </div>
+
+    <div id="header-container"></div>
+    <div id="sidebar-container"></div>
+
+    <div class="container container-responsive">
+
+      <div class="upload-left">
+
+
+        <div class="upload-section-2">
+          <div class="upload-section-2__upload-box">
+            <img src="images/upload_img.svg" alt="" class="upload-section-2__upload-img">
+            <p class="upload-selection-text"><span>Click to upload </span><span>or</span><span> drag and drop</span>
+              <input type="file" id="fileInput" accept="image/*" multiple="">
+            </p>
+          </div>
+          <div class="upload-section-2__file-size-divider">
+            <p class="upload-section-2__file-size">Max file size: 15 MB</p>
+
+          </div> <!-- New divider -->
+          <div class="img-section">
+            <div class="upload-section-2__preview-grid" id="previewGrid">
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+      <div class="form-section">
+        <div class="mb-3">
+          <label for="properties name" class="form-label">Properties name</label>
+          <input type="text" class="form-control input-height" id="properties-name"
+            placeholder="Enter your Properties Name">
+          <div id="nameError" class="error-msg"></div>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" class="form-control input-height" id="address" placeholder="Enter your address">
+          <div id="addressError" class="error-msg"></div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label for="country" class="form-label">Country</label>
+            <select class="form-control input-height select-address" id="country">
+              <option value="" selected disabled hidden>Select your country</option>
+              <!-- Add country options here -->
+              <option value="us">United States</option>
+              <option value="ca">Canada</option>
+              <!-- Add more countries as needed -->
+            </select>
+            <div id="countryError" class="error-msg"></div>
+          </div>
+
+          <div class="col">
+            <label for="state" class="form-label">State</label>
+            <select class="form-control input-height select-address" id="state">
+              <option value="" selected disabled hidden>Select your state</option>
+              <!-- Add state options here -->
+              <option value="ny">New York</option>
+              <option value="ca">California</option>
+              <!-- Add more states as needed -->
+            </select>
+            <div id="stateError" class="error-msg"></div>
+          </div>
+
+          <div class="col">
+            <label for="city" class="form-label">City</label>
+            <select class="form-control input-height select-address" id="city">
+              <option value="" selected disabled hidden>Select your city</option>
+              <!-- Add city options here -->
+              <option value="nyc">New York City</option>
+              <option value="la">Los Angeles</option>
+              <!-- Add more cities as needed -->
+            </select>
+            <div id="cityError" class="error-msg"></div>
+          </div>
+        </div>
+
+
+        <div class="row mb-3">
+          <div class="col">
+            <label for="floors" class="form-label">No. Of Floors</label>
+            <input type="text" class="form-control border-rad input-height" id="floors" placeholder="Enter your floors">
+            <div id="floorsError" class="error-msg"></div>
+          </div>
+          <div class="col">
+            <label for="rooms" class="form-label">No. Of Rooms</label>
+            <input type="text" class="form-control border-rad input-height" id="rooms" placeholder="Enter your rooms">
+            <div id="roomError" class="error-msg"></div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="living" class="form-label">No. Of Living</label>
+            <input type="text" class="form-control border-rad input-height" id="living" placeholder="Enter your living">
+            <div id="livingError" class="error-msg"></div>
+          </div>
+          <div class="col">
+            <label for="washroom" class="form-label">No. Of Washroom</label>
+            <input type="text" class="form-control border-rad input-height" id="washroom"
+              placeholder="Enter your washroom">
+            <div id="washroomError" class="error-msg"></div>
+          </div>
+        </div>
+
+        <hr class="form-divider">
+
+        <div class="toggle-group">
+          <div class="toggle-item" style="gap: 0.5rem;">
+            <label class="switch">
+              <input type="checkbox" class="toggle" id="carpet">
+              <span class="slider"></span>
+            </label>
+            <span class="switch-text">Carpet Cloth</span>
+          </div>
+          <div class="toggle-item" style="gap: 0.5rem;">
+            <label class="switch">
+              <input type="checkbox" class="toggle" id="pool">
+              <span class="slider"></span>
+            </label>
+            <span class="switch-text">Swimming Pool</span>
+          </div>
+          <div class="toggle-item" style="gap: 0.5rem;">
+            <label class="switch">
+              <input type="checkbox" class="toggle" id="frontYard">
+              <span class="slider"></span>
+            </label>
+            <span class="switch-text">Front Yard</span>
+          </div>
+          <div class="toggle-item" style="gap: 0.5rem;">
+            <label class="switch">
+              <input type="checkbox" class="toggle" id="backYard">
+              <span class="slider"></span>
+            </label>
+            <span class="switch-text">Back Yard</span>
+          </div>
+        </div>
+
+
+        <div class="button-container innerSaveButton">
+          <a class="add-properties-button" onclick="handleAddPropertices(event)" id="SaveButtonOne">Save</a>
+        </div>
+      </div>
+      <div class="button-container outerSaveButton">
+        <a class="add-properties-button" onclick="handleAddPropertices(event)" id="SaveButtonTwo">Save</a>
+      </div>
+    </div>
+
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup-content">
+        <!-- <input type="text" name="" id="Deleteimagesrc" hidden>
+        <input type="text" name="" id="DeleteimagePrev" hidden> -->
+        <!-- <h2 class="status-title">Status Title</h2> -->
+        <p id="popupMessage" class="popup-message">Do you want to Delete this Image?</p>
+        <div class="d-flex justify-content-end">
+          <button type="reset" class="btn btn-secondary me-2 form-btn-reset no " onclick="clearImgPop()">No</button>
+          <button type="submit" class="btn btn-primary form-btn-save yes" onclick="PropdeleteImg()">Yes</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <div id="imageModal" class="modal">
+    <span class="close">
+      <img src="./images/close_button.svg" alt="" style="filter: brightness(0) invert(1); width: 1.5rem;">
+    </span>
+    <img class="modal-content" id="fullImage">
+  </div>
+
+  <!-- for image upload -->
+  <script>
+    function displayDummyImagesLoader() {
+      const previewGrid = document.getElementById('previewGrid');
+      // Get the count of current uploaded images
+      const currentUploadedImages = previewGrid.querySelectorAll('.upload-section-2__preview-item img:not(.dummy)').length;
+      const dummyImagesCount = Math.max(4 - imgPaths.length, 0);
+
+      // Remove all existing dummy images
+      previewGrid.querySelectorAll('.upload-section-2__preview-item.dummy').forEach(dummy => {
+        previewGrid.removeChild(dummy);
+      });
+
+      // Add required dummy images
+      for (let i = 0; i < dummyImagesCount; i++) {
+        const imagePreview = document.createElement('div');
+        imagePreview.classList.add('upload-section-2__preview-item', 'dummy');
+
+        const imgElement = document.createElement('img');
+        imgElement.src = 'images/loaderImage.jpg';
+        imgElement.className = 'upload-section-2__preview-img';
+        imagePreview.appendChild(imgElement);
+
+        previewGrid.appendChild(imagePreview);
+      }
+      if (dummyImagesCount <= 0) {
+        const imagePreview = document.createElement('div');
+        imagePreview.classList.add('upload-section-2__preview-item', 'dummy');
+
+        const imgElement = document.createElement('img');
+        imgElement.src = 'images/loaderImage.jpg';
+        imgElement.className = 'upload-section-2__preview-img';
+        imagePreview.appendChild(imgElement);
+
+        previewGrid.appendChild(imagePreview);
+      }
+    }
+
+
+    function displayDummyImages() {
+      const previewGrid = document.getElementById('previewGrid');
+      // Get the count of current uploaded images
+      const currentUploadedImages = previewGrid.querySelectorAll('.upload-section-2__preview-item img:not(.dummy)').length;
+      const dummyImagesCount = Math.max(4 - imgPaths.length, 0);
+
+      // Remove all existing dummy images
+      previewGrid.querySelectorAll('.upload-section-2__preview-item.dummy').forEach(dummy => {
+        previewGrid.removeChild(dummy);
+      });
+
+      // Add required dummy images
+      for (let i = 0; i < dummyImagesCount; i++) {
+        const imagePreview = document.createElement('div');
+        imagePreview.classList.add('upload-section-2__preview-item', 'dummy');
+
+        const imgElement = document.createElement('img');
+        imgElement.src = DUMMY_IMAGE_SRC;
+        imgElement.className = 'upload-section-2__preview-img';
+        imagePreview.appendChild(imgElement);
+
+        previewGrid.appendChild(imagePreview);
+      }
+    }
+
+    function initializeImage() {
+      const fileInput = document.getElementById('fileInput');
+      const previewGrid = document.getElementById('previewGrid');
+      const MAX_IMAGES = 4;
+
+
+      function setImag(pathsImage) {
+        imgPaths.push(...pathsImage);
+        let imagePreview = document.getElementById('previewGrid');
+        // imagePreview.innerHTML = ''
+        pathsImage.forEach((imageSrc, index) => {
+
+
+          const imagePreview = document.createElement('div');
+          imagePreview.classList.add('upload-section-2__preview-item');
+
+          const imgElement = document.createElement('img');
+          imgElement.src = apiUrl + imageSrc + '?token=' + jwtToken;
+          imgElement.className = 'upload-section-2__preview-img';
+          imagePreview.appendChild(imgElement);
+
+          const overlay = document.createElement('div');
+          overlay.classList.add('upload-section-2__overlay');
+          const overlayIcons = document.createElement('div');
+          overlayIcons.classList.add('upload-section-2__overlay-icons');
+
+          const viewIcon = document.createElement('img');
+          viewIcon.src = 'images/eye_icon.svg';
+          viewIcon.alt = 'View';
+          viewIcon.className = 'upload-section-2__view-icon';
+          overlayIcons.appendChild(viewIcon);
+
+          const deleteIcon = document.createElement('img');
+          deleteIcon.src = 'images/delete_icon.svg';
+          deleteIcon.alt = 'Delete';
+          deleteIcon.className = 'upload-section-2__delete-icon';
+          overlayIcons.appendChild(deleteIcon);
+
+          overlay.appendChild(overlayIcons);
+          imagePreview.appendChild(overlay);
+
+          previewGrid.appendChild(imagePreview);
+
+          // Show overlay when an image is uploaded
+          overlay.style.visibility = 'visible';
+
+          // Add delete functionality
+          deleteIcon.addEventListener('click', () => {
+
+            // PropdeleteImg(imageSrc, imagePreview)
+
+
+            Deleteimagesrc = imageSrc
+            DeleteimagePrev = imagePreview
+            document.getElementById('popupOverlay').style.display = 'flex'
+            // previewGrid.removeChild(imagePreview);
+            // console.log("img preview")
+            // displayDummyImages();  // Update dummy images after deletion
+          });
+
+          // Add view functionality
+          viewIcon.addEventListener('click', () => {
+            const imgurl = apiUrl + imageSrc + '?token=' + jwtToken;
+            showModal(imgurl);
+          });
+
+          // Update dummy images after adding new image
+          displayDummyImages();
+
+        });
+
+      }
+
+
+      function handleFiles(files, path = '') {
+        let currentUploadedImages = previewGrid.querySelectorAll('.upload-section-2__preview-item img:not(.dummy)').length;
+
+        for (const file of files) {
+          if (file.size <= 15 * 1024 * 1024) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+
+            };
+            reader.readAsDataURL(file);
+          } else {
+            alert('File is too large: ' + file.name);
+          }
+        }
+      }
+
+
+
+      function showModal(imageSrc) {
+        const modal = document.getElementById('imageModal');
+        const fullImage = document.getElementById('fullImage');
+        const closeButton = document.getElementsByClassName('close')[0];
+
+        fullImage.src = imageSrc;
+        modal.style.display = 'flex';
+
+        closeButton.onclick = function () {
+          modal.style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+      }
+
+      const uploadBox = document.querySelector('.upload-section-2__upload-box');
+
+      uploadBox.addEventListener('click', function () {
+        fileInput.click();
+      });
+
+
+      //  upload img
+      $('#fileInput').on('change', function (event) {
+        displayDummyImagesLoader();
+        var formData = new FormData();
+        var maxSize = 15 * 1024 * 1024;
+
+        // Append all selected files to the FormData object
+        $.each(this.files, function (i, file) {
+          // formData.append('images', file);
+          if (file.size <= maxSize) {
+            formData.append('images', file);
+          } else {
+            console.warn(`File "${file.name}" exceeds the 15MB size limit.`);
+          }
+        });
+
+        // Send the FormData object to the API endpoint
+        const urlParams = new URLSearchParams(window.location.search);
+        let propid = urlParams.get('id');
+        if (!propid) {
+          propid = '';
+        }
+
+        $.ajax({
+          url: apiUrl + 'PropertyPhotos/upload?propid=' + propid,
+          type: 'POST',
+          data: formData,
+          headers: {
+            "Authorization": `Bearer ${jwtToken}`
+          },
+          processData: false, // Do not process data
+          contentType: false, // Do not set content type header
+          success: function (response) {
+            // console.log('Files uploaded successfully:', response);
+            console.log('Files paths:', response.data.filePaths.split('#:#'));
+            // imgPaths.push(...response.data.filePaths.split('#:#'));
+            // handleFiles(event.target.files);
+            const pathsImage = response.data.filePaths.split('#:#');
+            setImag(pathsImage);
+
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            displayDummyImages();
+            console.error('File upload failed:', textStatus, errorThrown);
+          }
+        });
+      });
+
+      uploadBox.addEventListener('dragover', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.style.borderColor = '#007bff';
+      });
+
+      uploadBox.addEventListener('dragleave', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.style.borderColor = '#ccc';
+      });
+
+      uploadBox.addEventListener('drop', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.style.borderColor = '#ccc';
+        handleFiles(event.dataTransfer.files);
+      });
+
+      // Display initial dummy images
+      displayDummyImages();
+
+      // editdata initialize data
+
+      function editAddPropertices() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        if (!id) {
+          return;
+        }
+        $.ajax({
+          url: apiUrl + 'PropertyBook/Byid?id=' + id,
+          type: 'GET',
+          contentType: 'application/json',
+          headers: {
+            "Authorization": `Bearer ${jwtToken}`
+          },
+          success: function (response) {
+            console.log(response);
+            if (response.success) {
+
+              document.getElementById('properties-name').value = response.data.name;
+              document.getElementById('address').value = response.data.addressLine1;
+              document.getElementById('city').value = response.data.cityId;
+              document.getElementById('state').value = response.data.stateId;
+              document.getElementById('country').value = response.data.countryId;
+              document.getElementById('floors').value = response.data.floors;
+              document.getElementById('rooms').value = response.data.rooms;
+              document.getElementById('living').value = response.data.living;
+              document.getElementById('washroom').value = response.data.washrooms;
+              document.getElementById('carpet').checked = response.data.isCarpet == 'True' ? true : false;
+              document.getElementById('pool').checked = response.data.isSwimmingPool == 'True' ? true : false;
+              document.getElementById('frontYard').checked = response.data.isFrontYard == 'True' ? true : false;
+              document.getElementById('backYard').checked = response.data.isBackYard == 'True' ? true : false;
+              document.getElementById('customSwitch').checked = response.data.isActive == 'True' ? true : false;
+
+              //  add img
+              setImag(response.dataList.images)
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error('Error:', error);
+
+          }
+        });
+      }
+      // editAddPropertices()
+      async function runFunctionsInSequence() {
+        try {
+          await setContryData();
+          await setStateData();
+          await setCityData();
+          await editAddPropertices();
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
+      }
+      runFunctionsInSequence();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeImage();
+    });
+  </script>
+
+  <script>
+    // setContryData();
+    // setStateData();
+    // setCityData();
+    // editAddPropertices();
+  </script>
+  <!-- delete img -->
+  <script>
+    function PropdeleteImg() {
+      const imageSrc = Deleteimagesrc
+      const imagePreview = DeleteimagePrev
+      const previewGrid = document.getElementById('previewGrid');
+
+      console.log("img preview", imageSrc)
+      // /PropertyPhotos/DeleteByPropertyPhotoPath
+      $.ajax({
+        url: apiUrl + 'PropertyPhotos/DeleteByPropertyPhotoPath',
+        type: 'DELETE',
+        contentType: 'application/json',
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`
+        },
+        data: JSON.stringify({
+          "path_photo": imageSrc
+        }),
+        success: function (response) {
+          console.log(response);
+          previewGrid.removeChild(imagePreview);
+          imgPaths = imgPaths.filter(path => path !== imageSrc);
+          displayDummyImages();
+        },
+        error: function (xhr, status, error) {
+          console.error('Error:', error);
+
+        }
+      });
+      document.getElementById('popupOverlay').style.display = 'none';
+
+    }
+    function clearImgPop() {
+      Deleteimagesrc = ''
+      DeleteimagePrev = ''
+      document.getElementById('popupOverlay').style.display = 'none';
+
+    }
+  </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    let propid = urlParams.get('id');
+    if (!propid) {
+      document.getElementById('SaveButtonOne').innerHTML = 'Create'
+      document.getElementById('SaveButtonTwo').innerHTML = 'Create'
+    }
+  </script>
+</body>
+
+</html>
+
+<!-- <script>
+  
+
+  let rawHtml = `
+                    <div class="upload-section-2__preview-item" id="${imageSrc}">
+                      <input type="text" value="${imageSrc}" hidden>
+                      <img src="${apiUrl + imageSrc + '?token=' + jwtToken}" class="upload-section-2__preview-img" alt="Image ${index + 1}">
+                      <div class="upload-section-2__overlay" style="visibility: visible;">
+                        <div class="upload-section-2__overlay-icons">
+                          <img src="images/eye_icon.svg" alt="View" class="upload-section-2__view-icon">
+                          <img src="images/delete_icon.svg" alt="Delete" class="upload-section-2__delete-icon">
+                        </div>
+                      </div>
+                    </div>
+                 `;
+        imgPaths.push(imageSrc);
+        console.log('imageSrc', imageSrc)
+        imagePreview.innerHTML += rawHtml;
+</script> -->
