@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap');
+
+:root {
+    --primary: #4154F1;
+    --bs-border-color: #dee2e6;
+    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+    --bs-body-bg: #fff;
+    --bs-body-color: #212529;
+    --border-color: #F5F9FF;
+    --P_light: #F7F9FF;
+    --L_light-black: #012970;
+    --pure: #ffffff;
+    --light-black: #676767;
+    --primary: #4154F1;
+    --black: #1A2130;
+    --height-btn: 2.25rem; /* Reduced by 25% from 3rem */
+    --f-weight: 700; /* Reduced by 25% from 700 */
+}
+
+body {
+    font-family: 'Nunito';
+    background-color: var(--P_light);
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.container-div {
+    margin: 0.75%; /* Reduced by 25% from 1% */
+    height: 100%;
+    border-radius: 11.25px; /* Reduced by 25% from 15px */
+    border: 1px solid #F5F9FF;
+    box-shadow: 0px 0px 2px rgb(14 70 163 / 14%);
+    background-color: white;
+}
+
+.table-wrap {
+    border-radius: 11.25px; /* Reduced by 25% from 15px */
+    font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem);
+    overflow-x: hidden;
+}
+
+.trader-header {
+    display: grid;
+    grid-template-columns: 28.66% 27.25% 22.55% 20.55%;
+    gap: 7.5px;
+    align-items: center;
+    font-size: clamp(0.825rem, -1.875rem + 2.75vw, 2.625rem);
+}
+
+
+.trader-container {
+    font-weight: 500; /* Reduced by 25% from 500 */
+    font-size: clamp(0.825rem, -1.875rem + 2.75vw, 2.625rem);/* Reduced by 25% from clamp(1.1rem, -1.875rem + 2.333333vw, 3.5rem) */
+    display: grid;
+    grid-template-columns: 28.66% 27.25% 22.55% 20.55%;
+    gap: 7.5px;
+    padding: 13.75px;
+    align-items: center;
+}
+
+/* .trader-column.trader-service-header {
+    text-align: center;
+} */
+
+.trader-column.trader-contact-header {
+    text-align: center;
+}
+
+.trader-header {
+    background-color: #67676721 !important;
+    font-weight: 700; /* Reduced by 25% from 700 */
+    border-radius: 7.5px 7.5px 0 0; /* Reduced by 25% from 10px */
+    padding: 14px;
+}
+
+.trader-column {
+    text-align: left;
+    padding-left: 2.25%; /* Reduced by 25% from 3% */
+}
+
+/* .trader-column.trader-service, */
+.trader-column.trader-contact {
+    text-align: center;
+}
+
+.trader-container.even-row {
+    background-color: var(--P_light);
+}

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Services</title>
+  <link rel="stylesheet" href="css/main2.css">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/myproperties.css">
+  <link rel="stylesheet" href="css/normal.css">
+  <script src="./script/appconst.js"></script>
+  <script src="./script/script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <style>
+    .active-card {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.953);
+      z-index: 20;
+      position: relative;
+    }
+
+    .card-hover:hover {
+      box-shadow: 0 3px 5px rgba(0, 6, 14, 0.953);
+    }
+
+
+    .pagetitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* padding: 10px; */
+      width: 98%;
+    }
+
+    .pagetitle h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .btn {
+      padding: 5px 65px;
+      font-style: normal;
+    }
+
+    .form-btn-reset {
+      box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+      border-color: #4154F1 !important;
+      background-color: white !important;
+      border: 1px solid #4153f170 !important;
+      color: #676767 !important;
+    }
+
+    .form-btn-save {
+      background-color: #4154F1 !important;
+      box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+      color: white;
+    }
+
+    .justify-content-end {
+      margin-top: 11%;
+      gap: 26px;
+    }
+
+    .accordion-toggle {
+      pointer-events: none;
+      margin-left: 2%;
+      width: 100%;
+    }
+
+
+
+    .service-name {
+      text-align: left;
+      flex: 1;
+      text-wrap: nowrap;
+    }
+
+    .completed-date {
+      text-align: left;
+      flex: 1;
+    }
+
+    .action-service {
+      text-align: left;
+      flex: 0.2;
+    }
+
+    .action-service .action-icon {
+      margin-left: 10px;
+      width: 50%;
+    }
+
+    .action-service {
+      /* width: 100px; */
+      /* or any fixed size you prefer */
+      position: relative;
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .action-service .action-icon {
+      width: 45px;
+      /* specify a fixed width for icons */
+      height: auto;
+      max-height: 20px;
+      /* specify a fixed height for icons */
+    }
+
+    .left-icon {
+      position: absolute;
+      left: 0;
+    }
+
+    .right-icon {
+      position: absolute;
+      right: 0;
+    }
+
+    /* .accordion-item {
+      padding: 10px;
+    } */
+
+    .accordion-container {
+      border-bottom: 1px solid #CAD1DC;
+    }
+
+    .pagetitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      /* padding: 10px; */
+    }
+
+
+    .accordion-toggle {
+      font-size: clamp(0.85rem, -0.875rem + 3.333333vw, 1.2rem);
+
+    }
+
+    @media(max-width:992px) {
+
+      .button-container2 {
+        display: block;
+        margin-right: 1%;
+      }
+    }
+
+
+    /* new style */
+
+    /* .accordion-container.accordion-header {
+      padding: 7.5px;
+    } */
+
+    .accordion-toggle {
+      display: grid;
+      grid-template-columns: 12% 76% 7%;
+      justify-content: center;
+      margin-left: 0;
+      /* margin: 0 1%; */
+    }
+
+    .pagetitle h1 {
+      margin: 0;
+      font-size: 1.3rem !important;
+    }
+
+    .accordion-header {
+      font-size: unset;
+
+    }
+
+    /* 
+    .accordion-item {
+      padding: 7.5px 0 !important;
+    } */
+
+    .add-properties-button {
+      padding: 7px 14px;
+      font-size: 0.8rem;
+    }
+
+    .accordion-toggle {
+      font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem);
+    }
+
+
+    .completed-date {
+      text-align: center;
+    }
+
+    .arrow-icon-responsive {
+      display: none;
+    }
+
+    @media (max-width:720px) {
+      .accordion-header {
+        padding: 14px 7px 14px 19px !important;
+      }
+
+      .accordion-toggle {
+        display: flex;
+        justify-content: space-between;
+        pointer-events: all;
+      }
+
+      .arrow-icon-responsive {
+        display:flex;
+        margin-right: 1%;
+      }
+
+      .action-service {
+        display: none;
+      }
+
+      .completed-date {
+        text-align: right;
+      }
+
+      .dropdown-content {
+        display: none;
+      }
+
+      .dropdown-content.show {
+        display: block;
+      }
+
+      .arrow-icon-responsive img.rotated {
+        transform: rotate(360deg);
+      }
+
+      .arrow-icon-responsive img {
+        transform: rotate(270deg);
+      }
+
+      .status-row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .accordian-bottom {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.9rem;
+        margin-left: 1.5%;
+      }
+
+      .action-responsive {
+        font-weight: 650;
+        font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem);
+
+      }
+    }
+
+    .dropdown-content {
+      display: none;
+    }
+
+    .accordion-header {
+      padding: 14px 7px 14px 10px;
+    }
+
+    img.action-responsive {
+      width: 90%;
+    }
+
+    .arrow-con-service {
+      width: clamp(0.578rem, -1.3125rem + 1.225vw, 1.838rem);
+
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeAll();
+    });
+  </script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="sidebar-container"></div>
+
+  <main id="main-content" class="main-content">
+    <div class="pagetitle">
+      <div class="title-nav">
+        <h1>Manage Services</h1>
+
+      </div>
+      <div class="button-container">
+        <a class="add-properties-button" href="add_service.html">Add Services</a>
+      </div>
+      <div class="button-container2">
+        <a class="add-properties-button" href="add_service.html">+</a>
+
+      </div>
+    </div>
+
+
+    <div class="d-flex justify-content-between align-items-center my-4"></div>
+    <div class="container-div">
+      <div class="table-wrap">
+        <div class="accordion-container accordion-header">
+          <div class="">
+            <div class="accordion-toggle" aria-expanded="false">
+              <div class="service-name">Service Name</div>
+              <div class="completed-date">Completed Date</div>
+              <div class="action-service">Action</div>
+            </div>
+          </div>
+        </div>
+
+        <!--service cleaning--->
+        
+
+        <div id="tableLoader">
+          <div class="tableLoader-container">
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+          </div>
+        </div>
+        <div id="MngServiceTable"></div>
+      </div>
+    </div>
+
+
+
+    <div class="pagination-container">
+      <div class="pagination-content">
+        <div class="items-per-page">
+
+          <select id="itemsPerPage" class="custom-select">
+            <option value="10">10</option>
+          </select>
+
+
+          <p></p>
+        </div>
+        <ul class="pagination">
+          <li><a href="#"><img src="./images/double_right.svg" alt="" class="pagiantion-img"></a></li>
+          <li><a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img"></a></li>
+
+
+          <li>
+            <a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img double-right-rotated"></a>
+          </li>
+          <li class="hide-on-small"><a href="#"><img src="./images/double_right.svg" alt=""
+                class="pagiantion-img double-right-rotated"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Pagination ends -->
+
+  </main>
+
+  <!-- Template Main JS File -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+      dropdownToggles.forEach((toggle) => {
+        toggle.addEventListener("click", function () {
+          const content = this.nextElementSibling;
+          const arrowIcon = this.querySelector(".arrow-icon-responsive img");
+
+          // Hide all other contents and remove rotation from other arrow icons
+          document.querySelectorAll(".dropdown-content").forEach((otherContent) => {
+            if (otherContent !== content) {
+              otherContent.classList.remove("show");
+              const otherArrowIcon = otherContent.previousElementSibling.querySelector(".arrow-icon-responsive img");
+              if (otherArrowIcon) {
+                otherArrowIcon.classList.remove("rotated");
+              }
+            }
+          });
+
+          // Toggle the current content
+          content.classList.toggle("show");
+          // Toggle the rotation of the arrow icon
+          arrowIcon.classList.toggle("rotated");
+        });
+      });
+    });
+  </script>
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateMngServices();
+    });
+
+    document.getElementById('itemsPerPage').addEventListener('change', function () {
+      const itemsPerPage = parseInt(this.value);
+      updateMngServices(1, itemsPerPage);
+    });
+  </script>
+
+</body>
+
+</html>

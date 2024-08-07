@@ -1,0 +1,36 @@
+<header class="header">
+    <div class="left-section">
+        <a href="index.html" class="logo d-flex align-items-center">
+
+            <img src="./images/procdoc_logo.svg" alt="propdoc logo" class="logo header-left-logo">
+            <img src="./images/propdoc_only_icon.svg" alt="propdoc logo" class="small-logo" >
+        </a>
+        <i class="bi bi-list  sidebar-toggle"></i>
+        <div class="search-bar search-bar-show">
+            <form class="search-form d-flex align-items-center" method="POST" action="#">
+              <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+              <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
+          </div>
+    </div>
+    <div class="right-section">
+        <li class=" d-block d-lg-none">
+            <a class="nav-icon search-bar-toggle " href="#">
+              <i class="bi bi-search"></i>
+            </a>
+          </li>
+        <div class="profile-dropdown" id="profileDropdown">
+            <img src="./images/profile.jpg" alt="Profile" class="profile-logo">
+            <span class="profile-name">John Doe</span>
+            <div class="dropdown-menu" id="dropdownMenu"
+                style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(-32%, 11%, 0px);">
+                <p class="profile-name-title">John Doe</p>
+                <p class="profile-role">Web Designer</p>
+                <a href="#" class="dropdown-item">My Profile</a>
+                <a href="#" class="dropdown-item">Account Settings</a>
+                <a href="#" class="dropdown-item">Need Help?</a>
+                <a href="#" class="dropdown-item">Sign Out</a>
+            </div>
+        </div>
+    </div>
+</header>

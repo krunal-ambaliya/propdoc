@@ -1,0 +1,54 @@
+:root{
+    --border-color:#F5F9FF;
+    --P_light:#F7F9FF;
+    --L_light-balck: #012970;
+    --pure: #ffffff;
+    --light-black:#676767;
+    --primary:#4154F1;
+    --black:#1A2130;
+    --height-btn: 3rem;
+    --f-weight:700;
+}
+.form-label{
+    color: var(--light-black) !important;
+    font-weight: var(--f-weight);
+}
+::placeholder{
+    font-weight: 400;
+}
+.input-group{
+    margin-left: 0 !important;
+}
+#mySvgIcon path {
+    fill: #F7F9FF;
+}
+.nav-link.active #mySvgIcon path {
+    fill: #fff; /* Change SVG color to white when active */
+}
+
+.form-container {
+    background-color:white;
+    border-radius: 16px;
+    padding: 20px;    
+    box-shadow: #3737370d 0px 0px 1px 1px;
+    border: 2px solid var(--border-color);
+}
+.form-control:disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.flag-icon {
+    width: 24px;
+    height: auto;
+}
+.form-control{
+    border-radius: 8px !important;
+}

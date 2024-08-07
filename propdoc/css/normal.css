@@ -1,0 +1,152 @@
+.items-per-page select {
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 29px 5px 13px;
+}
+
+.custom-select {
+    appearance: none;
+    /* Remove default arrow */
+    -webkit-appearance: none;
+    /* Remove default arrow for Safari */
+    -moz-appearance: none;
+    /* Remove default arrow for Firefox */
+    background: url(../images/pagiantion_arrow.svg) no-repeat left 35px center;
+
+    background-size: 8px 8px;
+    /* Adjust the size of the background image */
+    padding-left: 20px;
+    /* Add padding to the left to make space for the arrow */
+    padding-right: 10px;
+    /* Adjust padding to maintain space on the right */
+}
+
+.custom-select {
+
+    line-height: 1.5;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 10px 10px 30px;
+    /* Adjust padding for arrow space */
+}
+
+
+
+
+.page-active {
+    color: black;
+    background-color: #ffffff;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    bottom: 1.5%;
+    /* Reduced by 25% from 2% */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75%;
+    /* Reduced by 25% from 1% */
+    margin-top: auto;
+}
+
+.pagination-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* max-width: 60rem; */
+    /* Reduced by 25% from 80rem */
+    padding: 6px;
+    /* Reduced by 25% from 15px 16px */
+    background-color: #e7e7e7;
+    border-radius: 7.5px;
+    /* Reduced by 25% from 10px */
+}
+
+.pagination-content .items-per-page {
+    display: flex;
+    align-items: center;
+}
+
+.pagination-content .pagination {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination-content .pagination li {
+    margin: 0 2.25px;
+    /* Reduced by 25% from 3px */
+}
+
+.pagination-content .pagination li a {
+    text-decoration: none;
+    padding: 3.75px 7.5px;
+    /* Reduced by 25% from 5px 10px */
+    border-radius: 3.75px;
+    /* Reduced by 25% from 5px */
+    color: #333;
+    font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem);
+}
+
+.pagination-content .pagination li a.page-active {
+    background-color: white;
+    color: black;
+}
+
+.items-per-page p {
+    font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem);
+    /* Reduced by 25% from 1.1rem */
+    font-family: 'Nunito';
+    font-weight: bold;
+    /* Reduced by 25% from 700 */
+    color: #1A2130;
+    padding: 0 13.5px;
+    /* Reduced by 25% from 18px */
+
+}
+
+.double-right-rotated {
+    transform: rotate(180deg);
+}
+
+.pagination li {
+    display: flex;
+    align-items: center;
+}
+
+.pagination-content .pagination li a {
+    display: flex;
+    align-items: center;
+}
+
+.pagiantion-img {
+    width: 60%;
+    /* Reduced by 25% from 80% */
+}
+
+@media (max-width:500px) {
+
+   
+    .pagination li:nth-child(6),
+    .pagination li:nth-child(7) {
+        display: none;
+    }
+}
+@media (max-width: 992px) {
+    .items-per-page p {
+        display: none;
+    }
+}
+
+.form-control:focus ,input:focus {
+    color: #212529;
+    background-color:#fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 .19rem rgba(13, 110, 253, .25);
+  }
