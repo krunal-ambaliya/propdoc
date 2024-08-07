@@ -1,5 +1,5 @@
 apiUrl = "https://directors-wifi-bloomberg-inns.trycloudflare.com/api/";
-userRole = "agent"; // Change this to 'agent', 'trader', or 'admin' as needed
+userRole = "admin"; // Change this to 'agent', 'trader', or 'admin' as needed
 jwtToken = localStorage.getItem("jwtToken");
 userName = ''
 
