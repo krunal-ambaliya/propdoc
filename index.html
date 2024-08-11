@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/main2.css">
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/dashbaord.css">
+  <link rel="stylesheet" href="css/myproperties.css">
+  <link rel="stylesheet" href="css/normal.css">
+
+  <!-- Vendor JS Files -->
+  <script src="./script/appconst.js"></script>
+  <script src="./script/script.js"></script>
+
+  <style>
+    body {
+      background-color: #F7F9FF;
+    }
+
+
+    .pagetitle {
+      margin-left: unset;
+    }
+  </style>
+  <style>
+    .agent-name {
+      display: block;
+      position: relative;
+      height: 30px;
+      /* original: 40px */
+      line-height: 30px;
+      /* original: 40px */
+    }
+
+    .agent-name-text {
+      vertical-align: middle;
+      background-color: #E1EDFF;
+      border-radius: 1.5rem;
+      /* original: 2rem */
+      padding: 1.5px 5.25px;
+      /* original: 2px 7px */
+      font-size: 0.675rem;
+      /* original: 0.9rem */
+      font-weight: 600;
+      /* original: 600 */
+    }
+
+    .call-icon {
+      vertical-align: middle;
+      margin-right: 3.375px;
+      /* Reduced by 10% from 3.75px */
+      padding: 1.35px 4.725px;
+      /* Reduced by 10% from 1.5px 5.25px */
+      border-radius: 1.35rem;
+      /* Reduced by 10% from 1.5rem */
+      background-color: #4154F1;
+
+    }
+
+    .arrow-icon img {
+      width: clamp(0.578rem, -1.3125rem + 1.225vw, 1.838rem);
+      /* Reduced by 30% from clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem) */
+
+
+    }
+
+
+    .active-card {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.953);
+      z-index: 20;
+      position: relative;
+    }
+
+    .card-hover:hover {
+      box-shadow: 0 3px 5px rgba(0, 6, 14, 0.953);
+    }
+
+    .pagetitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* padding: 7.5px; */
+      /* original: 10px */
+      width: 97.5%;
+    }
+
+
+    .btn {
+      padding: 5px 65px;
+      font-style: normal;
+    }
+
+    .form-btn-reset {
+      box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+      border-color: #4154F1 !important;
+      background-color: white !important;
+      border: 1px solid #4153f170 !important;
+      color: #676767 !important;
+    }
+
+    .form-btn-save {
+      background-color: #4154F1 !important;
+      box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+      color: white;
+    }
+
+    .justify-content-end {
+      margin-top: 11%;
+      gap: 26px;
+    }
+
+    img.action-icon.right-icon {
+      width: 1.125rem;
+      /* Reduced by 25% from 1.5rem */
+      padding: 0;
+    }
+
+    .action-icon.left-icon {
+      width: 1.125rem;
+      /* Reduced by 25% from 1.5rem */
+      padding: 0;
+    }
+
+
+    .action {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: unset;
+      gap: 0.3rem;
+    }
+
+    .arrow-icon {
+      width: unset;
+      display: block;
+    }
+
+    .agent-accordion {
+      display: grid;
+      grid-template-columns: 2% 35% 57% 6%;
+    }
+
+
+    .accordion-container {
+      font-weight: 500;
+      font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem);
+    }
+
+    .accordion-header {
+      font-weight: 700;
+      padding: 9px 9px 9px 8px;
+
+    }
+
+
+
+    /* --------- changes -----------  */
+
+    .btn {
+      padding: 6px 35px;
+      font-style: normal;
+    }
+
+    .even-num {
+      background-color: #F7F9FF;
+    }
+
+
+    @media (max-width:500px) {
+
+
+      .action {
+        display: none;
+      }
+
+
+      .agent-accordion {
+        display: grid;
+        grid-template-columns: 2% 39% 45% 14%;
+      }
+
+
+      .popup-content {
+        width: 90%;
+      }
+
+      p#popupMessage {
+        font-size: 0.8rem;
+      }
+
+      .btn {
+        padding: 6px 35px;
+        font-style: normal;
+      }
+
+      .status-title {
+        font-size: 1.2rem;
+      }
+
+      .popup-content {
+        height: unset;
+      }
+
+      .action-icon-responsive {
+        width: unset;
+      }
+
+      .action-responsive img {
+        width: 1.2rem;
+      }
+
+      .action-val.action-heading {
+        text-align: right;
+        padding: unset;
+      }
+
+      .agent-accordion {
+        grid-template-columns: 2% 74% 18% !important;
+      }
+    }
+
+    @media (max-width: 300px) {
+      .btn {
+        padding: 6px 20px;
+        font-style: normal;
+      }
+    }
+
+    .container-div {
+      height: unset;
+      padding: unset !important;
+      margin-bottom: 1%;
+    }
+
+    .trader-column {
+      text-align: center;
+    }
+
+    .status {
+      display: flex;
+      justify-content: center;
+    }
+
+    .service-name {
+      text-align: center;
+    }
+
+    .agent-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7.5px 0;
+      margin: 0 0.5%;
+      width: 100%;
+      border-top: 1.5px dashed #4154f1ab;
+
+    }
+
+    .table-wrap {
+      height: 40vh;
+    }
+
+    .action-val.action-heading {
+      text-align: center;
+      padding: unset;
+    }
+
+    .action-val {
+      justify-content: center;
+    }
+
+    .status-icon {
+      vertical-align: middle;
+      width: 15%;
+      margin-right: 5px;
+    }
+
+    .in-active {
+      color: #EF4444;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .accordion-toggle[aria-expanded="true"] .arrow-icon img {
+      transform: rotate(90deg);
+    }
+
+    .footer-date,
+    .footer-time,
+    .footer-currency {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-bottom {
+      display: none;
+    }
+
+    @media (max-width:740px) {
+      .footer-right {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-top: 2%;
+        flex-wrap: wrap;
+      }
+
+      .agent-card-footer {
+        display: unset;
+      }
+
+      .footer-right>div {
+        margin-left: unset;
+      }
+
+      .footer-bottom {
+        justify-content: space-between;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding-top: 2%;
+      }
+
+      .service-name-bottom {
+        font-weight: 700;
+      }
+
+      .service-name {
+        display: none;
+      }
+
+      .agent-accordion {
+
+        grid-template-columns: 2% 81% 12%;
+      }
+
+      .action {
+        display: none;
+      }
+
+      .accordian-bottom {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem);
+        font-weight: 700;
+      }
+
+      .accordion-content {
+        padding: unset;
+      }
+
+      .accordion-toggle {
+        display: grid;
+        grid-template-columns: 4% 53% 43% !important;
+      }
+
+      .action-val {
+        justify-content: right;
+        padding: unset;
+      }
+
+      .action-val.action-heading {
+        text-align: right;
+        padding: unset;
+      }
+
+      .status {
+        justify-self: right;
+      }
+
+      .agent-card-footer {
+        margin-top: 2%;
+      }
+
+    }
+
+    @media (max-width:950px) {
+      .footer-left {
+        align-items: flex-start;
+      }
+
+      .footer-icon {
+        margin-right: unset;
+
+
+      }
+
+      .chat-icon {
+
+        width: 0.675em;
+        height: 0.675em;
+        margin-top: 0.2rem;
+      }
+    }
+
+
+
+    img.comment-icon {
+      width: 0.8rem;
+      height: 0.8rem;
+      /* margin-left: 0.4rem; */
+      margin-top: 0.2rem;
+
+    }
+
+    .accordion-toggle {
+      display: grid;
+      grid-template-columns: 2% 40% 47% 7%;
+
+    }
+
+    .chat-icon {
+      margin-top: 0.2rem;
+    }
+
+    .agent-footer-2 {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      border-top: 1px dashed #4153f1a6;
+      margin: 0 0.8rem;
+      align-items: center;
+      padding: 0 0 0.4rem 0;
+    }
+
+    .agent-footer-right {
+      display: flex;
+      justify-content: space-around;
+    }
+    .schedule{
+      background-color: #87EFAC;
+    }
+    .overdue{
+      background-color: #FED7AA;
+    }
+    .due{
+      background-color: #BFDBFE;
+    }
+    .status,
+    .quote-approval {
+      color: #1A2130;
+      padding:0.2rem 0.5rem;
+      border-radius: 15px;
+      margin-right: 7.5px;
+      font-weight: 650;
+    }
+    .agent-property-card{
+      background-color: #fff;
+      border-radius: 6px;
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.1);
+  margin:0.5% 0%;
+  border: 1px solid #ddd;
+  overflow: hidden;
+    }
+
+.agent-property-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem;
+  cursor: pointer;
+  flex-wrap: wrap;
+}
+/* .info-div{
+  font-size: 0.8rem;
+} */
+.my-jobs, .my-properteies {
+    overflow-x: overlay;
+    height: 27vh;
+}
+.dashboard-agent {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 1rem;
+}
+.trader-bottom-left {
+    margin-top: 0.3rem;
+}
+@media (max-width: 750px) {
+  .dashboard-agent {
+        display: flex;
+        flex-direction: column;
+    }
+  .agent-footer-2{
+    display: block;
+  }
+  .agent-footer-right {
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+}
+@media (max-width: 500px) {
+  
+.trader-ongoing-bottom{
+  display: flex;
+  flex-wrap: wrap;
+}
+.trader-bottom-right {
+        flex-wrap: wrap;
+        gap: 0.2rem;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+}
+.due-icon {
+    /* width: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+img.service-due-icon {
+    width: 50%;
+}
+.service-status.status-2 {
+    /* display: flex; */
+    justify-content: start;
+}
+  </style>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeAll();
+
+      initializeDashboard(userRole);
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="sidebar-container"></div>
+  <main id="main-content" class="main-content">
+
+<!-- pop-up message for changing status -->
+
+
+<div class="popup-overlay" id="popupOverlay" style="display: none;">
+  <div class="popup-content">
+    <h2 class="status-title">Status Title</h2>
+    <p id="popupMessage" class="popup-message">Are you sure want to create job?</p>
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-secondary me-2 form-btn-reset no" onclick="closePopup()">No</button>
+      <button type="button" class="btn btn-primary form-btn-save yes" onclick="confirmAction()">Yes</button>
+    </div>
+  </div>
+</div>
+
+<!-- pop-up message END here -->
+
+
+    <!-- ----  admin-only-content   --- --->
+
+    <div class="admin-only admin-content" id="admin">
+      <div class="pagetitle">
+        <h1>Dashboard</h1>
+      </div><!-- End Page Title -->
+
+      <!-- ongoing jobs -->
+      <div class="dashboard-admin">
+        <div class="piechart-container">
+          <div class="piechart-title">Jobs</div>
+          <div class="chart-label">
+            <div class="piechart-wrapper">
+              <div class="piechart" id="piechart1"></div>
+            </div>
+            <div class="labels" id="labels1"></div>
+          </div>
+        </div>
+
+        <div class="piechart-container">
+          <div class="piechart-title">Jobs</div>
+          <div class="chart-label">
+            <div class="piechart-wrapper">
+              <div class="piechart" id="piechart2"></div>
+            </div>
+            <div class="labels" id="labels2"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section-title">
+        <h1>Ongoing Jobs</h1>
+
+      </div>
+      <div class="admin-property-card">
+        <div class="admin-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status-completed">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+          <div class="admin-agent-trader-middle">
+            <div class="admin-agent-trader">
+              <button class="admin-agent-button">Agent: John Doe</button>
+              <button class="admin-trader-button">Trader: Smith Villian</button>
+            </div>
+            <div class="admin-middle-right">
+              <div class="footer-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>20 July 2024</span>
+              </div>
+              <div class="footer-time">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+              <div class="footer-currency">
+                <img class="footer-icon" src="./images/payment_icon.svg" alt="Currency Icon">
+                <span>$500.23</span>
+              </div>
+            </div>
+          </div>
+          <section class="admin-footer-2">
+            <div class="admin-footer-left-2 ml-1">
+              <img class="comment-icon" src="./images/address_icon.svg" alt="Chat Icon">
+              <span class="address-text">
+                Lorem ipsum dolor sit amet consectetur. Semper ac bibendum id ornare facilisis dis eu cras urna. Tellus
+                lorem ut dignissim mus faucibus dui tortor gravida.
+              </span>
+            </div>
+
+          </section>
+        </div>
+
+      </div>
+      <div class="admin-property-card">
+        <div class="admin-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status-completed">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+          <div class="admin-agent-trader-middle">
+            <div class="admin-agent-trader">
+              <button class="admin-agent-button">Agent: John Doe</button>
+              <button class="admin-trader-button">Trader: Smith Villian</button>
+            </div>
+            <div class="admin-middle-right">
+              <div class="footer-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>20 July 2024</span>
+              </div>
+              <div class="footer-time">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+              <div class="footer-currency">
+                <img class="footer-icon" src="./images/payment_icon.svg" alt="Currency Icon">
+                <span>$500.23</span>
+              </div>
+            </div>
+          </div>
+          <section class="admin-footer-2">
+            <div class="admin-footer-left-2 ml-1">
+              <img class="comment-icon" src="./images/address_icon.svg" alt="Chat Icon">
+              <span class="address-text">
+                Lorem ipsum dolor sit amet consectetur. Semper ac bibendum id ornare facilisis dis eu cras urna. Tellus
+                lorem ut dignissim mus faucibus dui tortor gravida.
+              </span>
+            </div>
+
+          </section>
+        </div>
+
+      </div>
+      <div class="admin-property-card">
+        <div class="admin-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status-pending">Status : Pending Quote Approval</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+          <div class="admin-agent-trader-middle">
+            <div class="admin-agent-trader">
+              <button class="admin-agent-button">Agent: John Doe</button>
+              <button class="admin-trader-button">Trader: Smith Villian</button>
+            </div>
+            <div class="admin-middle-right">
+              <div class="footer-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>20 July 2024</span>
+              </div>
+              <div class="footer-time">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+              <div class="footer-currency">
+                <img class="footer-icon" src="./images/payment_icon.svg" alt="Currency Icon">
+                <span>$500.23</span>
+              </div>
+            </div>
+          </div>
+          <section class="admin-footer-2">
+            <div class="admin-footer-left-2 ml-1">
+              <img class="comment-icon" src="./images/address_icon.svg" alt="Chat Icon">
+              <span class="address-text">
+                Lorem ipsum dolor sit amet consectetur. Semper ac bibendum id ornare facilisis dis eu cras urna. Tellus
+                lorem ut dignissim mus faucibus dui tortor gravida.
+              </span>
+            </div>
+            <div class="footer-schedule">
+              <a href="./ongoing_jobs.html" class="schedule-button"><img src="images/scheduled_icon.svg" alt="">Schedule
+                Appointment </a>
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+      <!-- properteis needing attention  -->
+      <div class="section-title">
+        <h1>Properties Needing Attention</h1>
+      </div>
+
+
+      <div class="admin-property-card">
+        <div class="admin-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="status-overdue">Status : Overdue</div>
+          </div>
+        </div>
+
+        <div class="admin-property-card-body needing-attention">
+          <div class="collapse-content">
+            <div class="left-buttons-dashboard">
+              <button class="info-btn"><img src="./images/floors_icon.svg" alt="" class="info-btn-icon"> Floors:
+                10</button>
+              <button class="info-btn"><img src="./images/rooms_icon.svg" alt="" class="info-btn-icon"> Rooms:
+                10</button>
+              <button class="info-btn"><img src="./images/living_icon.svg" alt="" class="info-btn-icon"></i> Living:
+                10</button>
+              <button class="info-btn"><img src="./images/washroom_icon.svg" alt="" class="info-btn-icon"> Washroom:
+                10</button>
+            </div>
+            <div class="right-info">
+              <div class="info-div">Carpet Cloth: No</div>
+              <div class="info-div">Swimming Pool: Yes</div>
+              <div class="info-div">Garden: Yes</div>
+              <div class="info-div">Status: No</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="admin-property-card">
+        <div class="admin-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="status-overdue">Status : Overdue</div>
+          </div>
+        </div>
+
+        <div class="admin-property-card-body needing-attention">
+          <div class="collapse-content">
+            <div class="left-buttons-dashboard">
+              <button class="info-btn"><i class="fa fa-building"></i> Floors: 10</button>
+              <button class="info-btn"><i class="fa fa-bed"></i> Rooms: 10</button>
+              <button class="info-btn"><i class="fa fa-couch"></i> Living: 10</button>
+              <button class="info-btn"><i class="fa fa-bath"></i> Washroom: 10</button>
+            </div>
+            <div class="right-info">
+              <div class="info-div">Carpet Cloth: No</div>
+              <div class="info-div">Swimming Pool: Yes</div>
+              <div class="info-div">Garden: Yes</div>
+              <div class="info-div">Status: No</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- ----  trader-only-content   --- --->
+    <div class="trader-only trader-content" id="trader">
+      <div class="pagetitle">
+        <h1>Dashboard</h1>
+      </div>
+      <div class="dashboard-trader">
+        <div class="piechart-container">
+          <div class="piechart-title">Jobs</div>
+          <div class="chart-label">
+            <div class="piechart-wrapper">
+              <div class="piechart" id="piechart3"></div>
+            </div>
+            <div class="labels" id="labels3"></div>
+          </div>
+        </div>
+        <div class="piechart-container">
+          <div class="piechart-title">Jobs</div>
+          <div class="chart-label">
+            <div class="piechart-wrapper">
+              <div class="piechart" id="piechart4"></div>
+            </div>
+            <div class="labels" id="labels4"></div>
+          </div>
+        </div>
+        <div class="piechart-container">
+          <div class="piechart-title">Jobs</div>
+          <div class="chart-label">
+            <div class="piechart-wrapper">
+              <div class="piechart" id="piechart5"></div>
+            </div>
+            <div class="labels" id="labels5"></div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="section-title">
+        <h1>Ongoing Jobs</h1>
+      </div>
+      <div class="admin-property-card">
+        <div class="admin-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status-completed">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+          <div class="trader-ongoing-bottom">
+
+            <div class="trader-bottom-right">
+              <div class="bottom-right-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>20 July 2024</span>
+              </div>
+              <div class="bottom-right-time">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+
+            </div>
+            <div class="trader-bottom-left">
+              <div class="mark-completed">
+                <a href="./ongoing_jobs.html" class="mark-completed-btn"><img src="images/mark-completed.svg"
+                    alt="">Mark as Completed </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="admin-property-card">
+        <div class="admin-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status-completed">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+          <div class="trader-ongoing-bottom">
+
+            <div class="trader-bottom-right">
+              <div class="bottom-right-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>20 July 2024</span>
+              </div>
+              <div class="bottom-right-time">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+
+            </div>
+            <div class="trader-bottom-left">
+              <div class="mark-completed">
+                <a href="./ongoing_jobs.html" class="mark-completed-btn"><img src="images/mark-completed.svg"
+                    alt="">Mark as Completed </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="admin-property-card">
+        <div class="admin-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status-completed">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+          <div class="trader-ongoing-bottom">
+
+            <div class="trader-bottom-right">
+              <div class="bottom-right-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>20 July 2024</span>
+              </div>
+              <div class="bottom-right-time">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+
+            </div>
+            <div class="trader-bottom-left">
+              <div class="mark-completed">
+                <a href="./ongoing_jobs.html" class="mark-completed-btn"><img src="images/mark-completed.svg"
+                    alt="">Mark as Completed </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    <!-- ----  agent-only-content   --- --->
+    <div class="agent-only agent-content" id="agent">
+
+      <div class="pagetitle">
+        <h1>Dashboard</h1>
+      </div>
+
+      <!-- pichart -->
+      <div class="dashboard-agent">
+        <div class="piechart-container">
+          <div class="piechart-title">Jobs</div>
+          <div class="chart-label">
+            <div class="piechart-wrapper">
+              <div class="piechart" id="piechart6"></div>
+            </div>
+            <div class="labels" id="labels6"></div>
+          </div>
+        </div>
+        <div class="piechart-container">
+          <div class="piechart-title">Jobs</div>
+          <div class="chart-label">
+            <div class="piechart-wrapper">
+              <div class="piechart" id="piechart7"></div>
+            </div>
+            <div class="labels" id="labels7"></div>
+          </div>
+        </div>
+        
+      </div>
+
+
+      <div class="section-title">
+        <h1>My Jobs</h1>
+        <div class="create-job-request">
+          <a class="section-btn" href="add_service_record.html">Create Job Request</a>
+
+        </div>
+      </div>
+      <div class="my-jobs">
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status schedule">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <img class="comment-icon" src="./images/address_icon.svg" alt="Chat Icon">
+              <span class="address-text">
+                Lorem ipsum dolor sit amet consectetur. Semper ac bibendum id ornare facilisis dis eu cras urna. Tellus
+                lorem ut dignissim mus faucibus dui tortor gravida.
+              </span>
+            </div>
+            <div class="agent-footer-right">
+
+
+              <div class="footer-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>18-4-1994</span>
+              </div>
+              <div class="footer-time footer-time-agent">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+              <div class="footer-currency">
+                <img class="footer-icon" src="./images/payment_icon.svg" alt="Currency Icon">
+                <span>$500.23</span>
+              </div>
+
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status schedule">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <img class="comment-icon" src="./images/address_icon.svg" alt="Chat Icon">
+              <span class="address-text">
+                Lorem ipsum dolor sit amet consectetur. Semper ac bibendum id ornare facilisis dis eu cras urna. Tellus
+                lorem ut dignissim mus faucibus dui tortor gravida.
+              </span>
+            </div>
+            <div class="agent-footer-right">
+
+
+              <div class="footer-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>18-4-1994</span>
+              </div>
+              <div class="footer-time footer-time-agent">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+              <div class="footer-currency">
+                <img class="footer-icon" src="./images/payment_icon.svg" alt="Currency Icon">
+                <span>$500.23</span>
+              </div>
+
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status schedule">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <img class="comment-icon" src="./images/address_icon.svg" alt="Chat Icon">
+              <span class="address-text">
+                Lorem ipsum dolor sit amet consectetur. Semper ac bibendum id ornare facilisis dis eu cras urna. Tellus
+                lorem ut dignissim mus faucibus dui tortor gravida.
+              </span>
+            </div>
+            <div class="agent-footer-right">
+
+
+              <div class="footer-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>18-4-1994</span>
+              </div>
+              <div class="footer-time footer-time-agent">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+              <div class="footer-currency">
+                <img class="footer-icon" src="./images/payment_icon.svg" alt="Currency Icon">
+                <span>$500.23</span>
+              </div>
+
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status schedule">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <img class="comment-icon" src="./images/address_icon.svg" alt="Chat Icon">
+              <span class="address-text">
+                Lorem ipsum dolor sit amet consectetur. Semper ac bibendum id ornare facilisis dis eu cras urna. Tellus
+                lorem ut dignissim mus faucibus dui tortor gravida.
+              </span>
+            </div>
+            <div class="agent-footer-right">
+
+
+              <div class="footer-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>18-4-1994</span>
+              </div>
+              <div class="footer-time footer-time-agent">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+              <div class="footer-currency">
+                <img class="footer-icon" src="./images/payment_icon.svg" alt="Currency Icon">
+                <span>$500.23</span>
+              </div>
+
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status">
+            <div class="service-name-job">Service Name : Cleaning</div>
+            <div class="status schedule">Status : Scheduled</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <img class="comment-icon" src="./images/address_icon.svg" alt="Chat Icon">
+              <span class="address-text">
+                Lorem ipsum dolor sit amet consectetur. Semper ac bibendum id ornare facilisis dis eu cras urna. Tellus
+                lorem ut dignissim mus faucibus dui tortor gravida.
+              </span>
+            </div>
+            <div class="agent-footer-right">
+
+
+              <div class="footer-date">
+                <img class="footer-icon" src="./images/date_icon.svg" alt="Date Icon">
+                <span>18-4-1994</span>
+              </div>
+              <div class="footer-time footer-time-agent">
+                <img class="footer-icon" src="./images/time_icon.svg" alt="Time Icon">
+                <span>10:24 AM to 01:00 PM</span>
+              </div>
+              <div class="footer-currency">
+                <img class="footer-icon" src="./images/payment_icon.svg" alt="Currency Icon">
+                <span>$500.23</span>
+              </div>
+
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+      <div class="section-title">
+        <h1>My Properteis</h1>
+        <div class="create-job-request">
+          <a class="section-btn" href="add_properties.html">Add Properties</a>
+
+        </div>
+      </div>
+      <div class="my-properteies">
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status status-2">
+            <div onclick="showPopup()" class="due-icon"> <img src="images/service_due_icon.svg" alt="" class="service-due-icon"> </div>
+            <div class="status overdue">Status : overdue</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <div class="left-buttons">
+                <button class="info-btn"><img src="./images/floors_icon.svg" alt="" class="info-btn-icon">Floors: 8</button>
+                <button class="info-btn"><img src="./images/rooms_icon.svg" alt="" class="info-btn-icon">Rooms: 8</button>
+                <button class="info-btn"><img src="./images/living_icon.svg" alt="" class="info-btn-icon">Living: 8</button>
+                <button class="info-btn"><img src="./images/washroom_icon.svg" alt="" class="info-btn-icon">Washroom: 8</button>
+              </div>
+            </div>
+            <div class="agent-footer-right">
+              <div class="right-info">
+                <div class="info-div">Carpet Cloth: No</div>
+                <div class="info-div">Swimming Pool: No</div>
+                <div class="info-div">Front Yard: No</div>
+                <div class="info-div">Back Yard: No</div>
+              </div>
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status status-2">
+            <div class="status due">Status : Due</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <div class="left-buttons">
+                <button class="info-btn"><img src="./images/floors_icon.svg" alt="" class="info-btn-icon">Floors: 8</button>
+                <button class="info-btn"><img src="./images/rooms_icon.svg" alt="" class="info-btn-icon">Rooms: 8</button>
+                <button class="info-btn"><img src="./images/living_icon.svg" alt="" class="info-btn-icon">Living: 8</button>
+                <button class="info-btn"><img src="./images/washroom_icon.svg" alt="" class="info-btn-icon">Washroom: 8</button>
+              </div>
+            </div>
+            <div class="agent-footer-right">
+              <div class="right-info">
+                <div class="info-div">Carpet Cloth: No</div>
+                <div class="info-div">Swimming Pool: No</div>
+                <div class="info-div">Front Yard: No</div>
+                <div class="info-div">Back Yard: No</div>
+              </div>
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status status-2">
+            <div class="status due">Status : Due</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <div class="left-buttons">
+                <button class="info-btn"><img src="./images/floors_icon.svg" alt="" class="info-btn-icon">Floors: 8</button>
+                <button class="info-btn"><img src="./images/rooms_icon.svg" alt="" class="info-btn-icon">Rooms: 8</button>
+                <button class="info-btn"><img src="./images/living_icon.svg" alt="" class="info-btn-icon">Living: 8</button>
+                <button class="info-btn"><img src="./images/washroom_icon.svg" alt="" class="info-btn-icon">Washroom: 8</button>
+              </div>
+            </div>
+            <div class="agent-footer-right">
+              <div class="right-info">
+                <div class="info-div">Carpet Cloth: No</div>
+                <div class="info-div">Swimming Pool: No</div>
+                <div class="info-div">Front Yard: No</div>
+                <div class="info-div">Back Yard: No</div>
+              </div>
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status status-2">
+            <div class="status overdue">Status : overdue</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <div class="left-buttons">
+                <button class="info-btn"><img src="./images/floors_icon.svg" alt="" class="info-btn-icon">Floors: 8</button>
+                <button class="info-btn"><img src="./images/rooms_icon.svg" alt="" class="info-btn-icon">Rooms: 8</button>
+                <button class="info-btn"><img src="./images/living_icon.svg" alt="" class="info-btn-icon">Living: 8</button>
+                <button class="info-btn"><img src="./images/washroom_icon.svg" alt="" class="info-btn-icon">Washroom: 8</button>
+              </div>
+            </div>
+            <div class="agent-footer-right">
+              <div class="right-info">
+                <div class="info-div">Carpet Cloth: No</div>
+                <div class="info-div">Swimming Pool: No</div>
+                <div class="info-div">Front Yard: No</div>
+                <div class="info-div">Back Yard: No</div>
+              </div>
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div class="agent-property-card">
+        <div class="agent-property-card-header" onclick="toggleAccordion(this)">
+          <div class="property-name">
+            <img src="./images/arrow_down.svg" alt="Arrow Icon" class="arrow-icon-accordian-2">
+            admin ipsum dolor sit amet consectetur. snf// Address
+          </div>
+          <div class="service-status status-2">
+            <div class="status overdue">Status : overdue</div>
+          </div>
+        </div>
+        <div class="admin-property-card-body">
+
+          <section class="agent-footer-2">
+            <div class="admin-footer-left-2">
+              <div class="left-buttons">
+                <button class="info-btn"><img src="./images/floors_icon.svg" alt="" class="info-btn-icon">Floors: 8</button>
+                <button class="info-btn"><img src="./images/rooms_icon.svg" alt="" class="info-btn-icon">Rooms: 8</button>
+                <button class="info-btn"><img src="./images/living_icon.svg" alt="" class="info-btn-icon">Living: 8</button>
+                <button class="info-btn"><img src="./images/washroom_icon.svg" alt="" class="info-btn-icon">Washroom: 8</button>
+              </div>
+            </div>
+            <div class="agent-footer-right">
+              <div class="right-info">
+                <div class="info-div">Carpet Cloth: No</div>
+                <div class="info-div">Swimming Pool: No</div>
+                <div class="info-div">Front Yard: No</div>
+                <div class="info-div">Back Yard: No</div>
+              </div>
+
+
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleAccordion(element) {
+      const body = element.nextElementSibling;
+      const arrowIcon = element.querySelector('.arrow-icon-accordian-2');
+
+      if (body.classList.contains('active')) {
+        body.classList.remove('active');
+        body.classList.add('inactive');
+        arrowIcon.classList.remove('rotated');
+      } else {
+        body.classList.remove('inactive');
+        body.classList.add('active');
+        arrowIcon.classList.add('rotated');
+      }
+    }
+  </script>
+  <script>
+    // JavaScript code here
+    const accordionItems = document.querySelectorAll('.accordion-item');
+
+    accordionItems.forEach(item => {
+      const toggle = item.querySelector('.accordion-toggle');
+      const content = item.querySelector('.accordion-content');
+
+      toggle.addEventListener('click', () => {
+        content.classList.toggle('show');
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !isExpanded);
+      });
+    });
+  </script>
+
+  <script src="script/pichart.js"></script>
+</body>
+
+</html>

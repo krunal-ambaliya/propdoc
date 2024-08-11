@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" href="css/main2.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/users.css">
+  <link rel="stylesheet" href="css/normal.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./script/appconst.js"></script>
+  <script src="./script/script.js"></script>
+  <style>
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 20px;
+      width: 35%;
+      border-radius: 10px;
+      text-align: left;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .popup-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .popup-header h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .popup-header img {
+      cursor: pointer;
+      width: 0.7rem;
+      height: 0.7rem;
+      margin-right: 1%;
+    }
+
+    .popup-content hr {
+      width: 100%;
+      border: 0.5px solid #dee2e6;
+      margin-bottom: 20px;
+    }
+
+    .popup-content .form-group {
+      width: 100%;
+      margin-bottom: 0.6rem;
+    }
+
+    .popup-content .form-group label {
+      display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #676767;
+    }
+
+    .popup-content .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    .popup-content .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    .popup-content .form-actions button {
+      padding: 10px 40px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .popup-content .form-actions .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .popup-content .form-actions .btn-primary {
+      background-color: #4154f1;
+      color: white;
+    }
+
+    ::placeholder {
+      padding-left: 10px;
+    }
+
+    /* -------- changes ----- */
+
+    .user-column {
+      padding: 12px 0px;
+      font-size: clamp(0.825rem, -1.875rem + 2.75vw, 2.625rem);
+    }
+
+    .popup-content {
+      width: 35%;
+    }
+
+    .arrow-icon-responsive {
+      display: none;
+    }
+
+    @media (max-width:800px) {
+      .popup-content {
+        width: 80%;
+      }
+    }
+
+    @media (max-width:800px) {
+      .popup-content {
+        width: 60%;
+      }
+
+      .user-contact {
+        display: none;
+        text-align: center;
+      }
+
+      .user-email {
+        display: none;
+      }
+
+      .created-date {
+        display: none;
+      }
+
+      .user-action {
+        display: none;
+      }
+
+      .user-column {
+        grid-template-columns: 80% 17%;
+        align-items: center;
+      }
+
+      .user-name {
+        display: flex;
+        align-items: center;
+      }
+
+      .first-arrow {
+        visibility: hidden;
+      }
+
+      .arrow-icon-responsive {
+        margin-right: 2.3%;
+        /* margin-top: -0.15rem; */
+        display: flex;
+        /* margin-left: -1%; */
+        display: flex;
+      }
+
+      .accordian-bottom {
+        margin: 0% 4%;
+
+        padding-bottom: 0.25rem;
+        padding-top: 0.25rem;
+        width: unset;
+        font-weight: unset;
+        font-size: clamp(0.825rem, -1.875rem + 2.75vw, 2.625rem);
+        justify-content: space-between;
+        display: flex;
+      }
+
+      .responsive-heading {
+        font-weight: 650;
+      }
+      .user-column {
+        cursor: pointer;
+      }
+
+      .user-row-height {
+        padding: 7px 0px;
+      }
+
+      .action-responsive {
+        width: 1.2rem;
+      }
+    }
+
+    /* Initially hide dropdown content */
+    .dropdown-content {
+      display: none;
+    }
+
+    .dropdown-content.show {
+      display: block;
+    }
+
+    .arrow-icon {
+      margin-top: -0.15rem;
+      transform: rotate(270deg);
+      width: clamp(0.578rem, -1.3125rem + 1.225vw, 1.838rem);
+      padding: unset;
+    }
+
+    .arrow-icon.rotated {
+      transform: rotate(360deg);
+      transition: transform 0.3s ease;
+    }
+    form{
+      padding: unset;
+    }
+    
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeAll();
+    });
+  </script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="sidebar-container"></div>
+
+  <main id="main-content" class="main-content">
+    <div class="pagetitle">
+      <div class="title-nav">
+        <h1>Users</h1>
+
+      </div>
+      <div class="button-container">
+
+        <a class="add-properties-button" href="javascript:void(0);" onclick="showPopup()">Invite user</a>
+        <div class="popup-overlay" id="inviteUserPopup">
+          <div class="popup-content">
+            <div class="popup-header">
+              <h2>Invite User</h2>
+              <img src="./images/close_button.svg" alt="Close" onclick="closePopup()">
+            </div>
+            <hr>
+            <form>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter user email">
+              </div>
+              <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" id="username" placeholder="Enter user name">
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center my-4"></div>
+    <div class="container-div">
+      <div class="table-wrap">
+        <div class="user-container user-header">
+          <div class="user-column">
+
+            <div class="user-name">
+              <div class="arrow-icon-responsive first-arrow"><img src="./images/arrow_down.svg" alt=""
+                  class="arrow-icon"></div>
+              User Name
+            </div>
+            <div class="user-email">Email</div>
+            <div class="user-contact">Contact No</div>
+            <div class="user-status">Status</div>
+            <div class="created-date">Created Date</div>
+            <div class="user-action">Action</div>
+          </div>
+        </div>
+        
+        <div id="tableLoader">
+          <div class="tableLoader-container">
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            
+          </div>
+        </div>
+       <div id="userTable"></div>
+
+      </div>
+    </div>
+    
+     <!-- Pagination starts -->
+     <div class="pagination-container">
+      <div class="pagination-content">
+        <div class="items-per-page">
+
+          <select id="itemsPerPage" class="custom-select">
+            <option value="10">10</option>
+          </select>
+
+
+          <p></p>
+        </div>
+        <ul class="pagination">
+          <li><a href="#"><img src="./images/double_right.svg" alt="" class="pagiantion-img"></a></li>
+          <li><a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img"></a></li>
+
+
+          <li>
+            <a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img double-right-rotated"></a>
+          </li>
+          <li class="hide-on-small"><a href="#"><img src="./images/double_right.svg" alt=""
+                class="pagiantion-img double-right-rotated"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Pagination ends -->
+  </main>
+  <script>
+    function showPopup() {
+      document.getElementById('inviteUserPopup').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('inviteUserPopup').style.display = 'none';
+    }
+  </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateUser();
+    });
+
+    document.getElementById('itemsPerPage').addEventListener('change', function () {
+      const itemsPerPage = parseInt(this.value);
+      updateUser(1, itemsPerPage);
+    });
+  </script>
+ 
+  <!-- Template Main JS File -->
+
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/signup.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!--font family-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./script/appconst.js"></script>
+    <script src="./script/script.js"></script>
+    <link rel="stylesheet" href="css/normal.css">
+    <style>
+        input::placeholder {
+            font-size: 0.7rem;
+            font-weight: 500;
+
+        }
+
+        input {
+            padding-left: 0.6rem;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width:768px) {
+            input::placeholder {
+                font-size: 0.6rem;
+            }
+
+            input {
+                font-size: 0.6rem;
+                padding-left: 0.8rem;
+            }
+
+            .form-col {
+                margin-bottom: 1%;
+            }
+        }
+
+        @media (max-width:500px) {
+
+            /* input{
+                margin-top: 0.4rem;
+            } */
+
+            .form-row {
+                flex-direction: column;
+                /* height: 7rem; */
+                font-size: 1rem;
+            }
+
+            input {
+                border-radius: 4.5px;
+                height: 1.8rem;
+                margin-bottom: unset;
+                padding-left: 0.5rem;
+            }
+
+            .heading-frm h2 {
+                font-size: 1.3rem;
+            }
+
+            .heading-frm p {
+                font-size: 100%;
+                max-width: 90%;
+                color: #676767;
+                font-weight: 500;
+            }
+
+            .heading-frm {
+                margin: 1rem 0 2.5rem 0;
+            }
+
+            input::placeholder {
+                font-size: 0.6rem;
+            }
+
+            .sf-label {
+                font-size: 65%;
+                font-weight: 600;
+                padding-bottom: 4px;
+            }
+
+            .submit {
+                width: 100%;
+                font-size: 0.8rem;
+                height: 1.8rem;
+            }
+
+            .signin {
+                font-size: 90%;
+            }
+
+            .bottom-form {
+                margin-top: 7%;
+
+            }
+
+            .popup-box {
+                padding: 33px 24px 20px 24px !important;
+            }
+
+            .popup-box p {
+                color: #012970;
+                margin: 10px 0;
+                font-weight: 700;
+                font-size: 0.8rem;
+            }
+
+            .otp-inputs {
+                gap: 20px !important;
+                width: 100%;
+            }
+
+            .continue-btn {
+                width: 100% !important;
+
+            }
+        }
+
+        /* popup  */
+        .blur-bg {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-box {
+            background: white;
+            border-radius: 10px;
+            padding: 33px 34px 20px 34px;
+            text-align: center;
+            /* width: 300px; */
+            max-width: 90%;
+        }
+
+        .popup-box h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .popup-box p {
+            color: #012970;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .popup-box p span {
+            color: #4154F1;
+        }
+
+        .otp-inputs {
+            display: flex;
+            justify-content: center;
+            margin: 34px 0px;
+            gap: 11px;
+            /* width: 90%; */
+        }
+
+        .otp-inputs input {
+            width: 30px;
+            margin-bottom: 0;
+            height: 30px;
+            text-align: center;
+            padding: 0;
+            font-size: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .popup-box a {
+            color: #4154F1;
+            text-decoration: none;
+        }
+
+        .continue-btn {
+            margin-top: 3%;
+            font-weight: var(--f-weight);
+            font-family: 'nunito';
+            width: 12rem;
+            height: 2rem;
+            border: none;
+            border-radius: 9px;
+            font-size: 12px;
+            cursor: pointer;
+            color: white;
+            background-color: #4154F1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="images/procdoc_logo.svg" alt="Procdoc Logo" class="logo">
+    </div>
+    <div class="heading-frm">
+        <h2>Let's get started </h2>
+        <p>Begin this journey for free with no set up costs or hidden chargers. Start by filling out your details</p>
+    </div>
+    <div class="container">
+        <div class="form-container">
+
+            <form>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="firstName" class="sf-label">First Name</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name"
+                                required>
+                            <div class="error-msg" id="firstName-Error"></div>
+                        </div>
+                        <div class="form-col">
+                            <label for="lastName" class="sf-label">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name"
+                                required>
+                            <div class="error-msg" id="lastName-Error"></div>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="email" class="sf-label">Email</label>
+                            <input class="input-box" type="email" id="email" name="email" placeholder="Enter your email"
+                                required>
+                            <div class="error-msg" id="email-Error"></div>
+                        </div>
+                        <div class="form-col">
+                            <label for="contactNumber" class="sf-label">Contact Number</label>
+                            <input type="text" id="contactNumber" name="contactNumber"
+                                placeholder="Enter your contact number" required>
+                            <div class="error-msg" id="contactNumber-Error"></div>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="password" class="sf-label">Password</label>
+                            <input class="input-box" type="password" id="password" name="password"
+                                placeholder="Enter your Password" required>
+                            <div class="error-msg" id="password-Error"></div>
+                        </div>
+                        <div class="form-col">
+                            <label for="confirmPassword" class="sf-label">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                placeholder="Enter your confirm password" required>
+                            <div class="error-msg" id="confirmPassword-Error"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <div class="bottom-form">
+
+                <button onclick="handleSignup()" type="submit" class="submit btn-color">Signup</button>
+                <p class="signin">Already have an account? <a href="login.html">Sign in </a></p>
+            </div>
+
+            <div class="blur-bg" id="popup">
+                <div class="popup-box">
+                    <h2>Code Sent</h2>
+                    <p>Check your email <span>john******@gmail.com</span> for the verification code</p>
+                    <div class="otp-inputs">
+                        <input type="text" maxlength="1">
+                        <input type="text" maxlength="1">
+                        <input type="text" maxlength="1">
+                        <input type="text" maxlength="1">
+                        <input type="text" maxlength="1">
+                        <input type="text" maxlength="1">
+                    </div>
+
+                    <button class="continue-btn" onclick="handleRegister()">Continue</button>
+                    <p>Don't received the code? <a href="#">Send the code again</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var otpInputs = document.querySelectorAll(".otp-inputs input");
+
+            otpInputs.forEach((input, index) => {
+                input.addEventListener("input", function () {
+                    if (this.value.length >= this.maxLength) {
+                        // Move to the next input if it exists
+                        if (index < otpInputs.length - 1) {
+                            otpInputs[index + 1].focus();
+                        }
+                    } else if (this.value.length === 0) {
+                        // Move to the previous input if it exists
+                        if (index > 0) {
+                            otpInputs[index - 1].focus();
+                        }
+                    }
+                });
+
+                // Optional: Handle the backspace key to move to the previous input
+                input.addEventListener("keydown", function (event) {
+                    if (event.key === "Backspace" && this.value.length === 0) {
+                        if (index > 0) {
+                            otpInputs[index - 1].focus();
+                        }
+                    }
+                });
+            });
+        });
+
+
+        function handleSignup() {
+            // event.preventDefault();
+            var valid = true;
+            var firstName = document.getElementById('firstName').value
+            var lastName = document.getElementById('lastName').value
+            var email = document.getElementById('email').value
+            var contactNumber = document.getElementById('contactNumber').value
+            var password = document.getElementById('password').value
+            var confirmPassword = document.getElementById('confirmPassword').value
+
+            if (!firstName) {
+                document.getElementById('firstName-Error').innerHTML = 'require error msg'
+                valid = false
+            }
+            if (!lastName) {
+                document.getElementById('lastName-Error').innerHTML = 'require error msg'
+                valid = false
+            }
+            if (!email) {
+                document.getElementById('email-Error').innerHTML = 'require error msg'
+                valid = false
+            }
+            if (!contactNumber) {
+                document.getElementById('contactNumber-Error').innerHTML = 'require error msg'
+                valid = false
+            }
+            if (!password) {
+                document.getElementById('password-Error').innerHTML = 'require error msg'
+                valid = false
+            }
+            if (!confirmPassword) {
+                document.getElementById('confirmPassword-Error').innerHTML = 'require error msg'
+                valid = false
+            }
+            if (!valid) {
+                return;
+            }
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById('email-Error').innerHTML = 'Please enter a valid email address.';
+                isValid = false;
+            }
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPassword-Error').innerHTML = 'same password error msg'
+                valid = false;
+            }
+            if (!valid) {
+                return;
+            }
+
+
+
+            document.getElementById('popup').style.display = 'flex';
+        }
+    </script>
+
+</body>
+
+</html>

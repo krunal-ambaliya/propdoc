@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services</title>
+  <link rel="stylesheet" href="css/main2.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/main.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/myproperties.css">
+  <link rel="stylesheet" href="css/normal.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Template Main JS File -->
+  <script src="./script/appconst.js"></script>
+  <script src="./script/script.js"></script>
+  <style>
+    .service-status {
+      gap: 1rem;
+    }
+
+    .arrow-icon-responsive img {
+      width: clamp(0.578rem, -1.3125rem + 1.225vw, 1.838rem);
+    }
+
+    .service-status-dropdown {
+      gap: 1rem;
+    }
+
+    .action-service {
+      text-align: center;
+    }
+
+    .action {
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .accordion-item {
+      border: 0;
+    }
+
+    @media (max-width:992px) {
+
+      .action-service {
+        display: none;
+      }
+
+      .button-container2 {
+        display: block;
+        margin-right: 1%;
+      }
+
+      /* .pagetitle {
+        align-items: end;
+         padding: 10px;
+      }*/
+      .due-icon{
+        position: unset !important;
+      }
+    }
+
+    @media (min-width:992px) {
+
+
+      .accordion-toggle {
+        display: grid;
+        grid-template-columns: 14% 14% 17% 30% 8%;
+      }
+    }
+
+    /* new style */
+    .accordion-container {
+      font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem) !important;
+    }
+
+
+    @media (max-width: 700px) {
+      .title-nav h1 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+        /* Adjust the width as needed */
+      }
+
+      .title-nav h1::after {
+        content: '...';
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 280px;
+        /* Adjust the width as needed */
+      }
+    }
+
+    @media (max-width: 500px) {
+
+
+      .pagetitle {
+        align-items: end;
+      }
+
+
+      .dropdown-content {
+        padding: 0% 5%;
+        padding-bottom: 0.5rem;
+      }
+
+      .comments-content {
+        text-align: end;
+      }
+    }
+
+    .accordion-item {
+      padding: unset;
+    }
+
+    .due-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 0.5rem;
+    display: flex;
+    /* padding-left: 2rem; */
+}
+
+
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+    }
+
+    .popup-message {
+      margin-bottom: 20px;
+    }
+
+    .form-btn-reset,
+    .form-btn-save {
+      margin: 5px;
+    }
+
+    .form-btn-reset,
+    .form-btn-save {
+      margin: 5px;
+      /* padding: 0 4rem; */
+      text-align: center;
+      width: 6rem !important;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeAll();
+    });
+  </script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="sidebar-container"></div>
+
+  <main id="main-content" class="main-content">
+    <div class="pagetitle">
+      <div class="title-nav">
+        <h1 id="propertyAddress">Lorem ipsum dolor sit amet consectetur. //Address</h1>
+        <nav>
+          <ol class="breadcrumb">
+
+            <li class="breadcrumb-item active" id="propertyName"> Property Name</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="button-container">
+        <a class="add-properties-button" href="add_service_record.html" id="URLaddservice">Add Service records</a>
+      </div>
+      <div class="button-container2">
+        <a class="add-properties-button" href="add_service_record.html" id="addserviceURL">+</a>
+      </div>
+    </div>
+
+
+
+
+    <div class="container-div">
+      <div class="table-wrap">
+        <div class="accordion-container accordion-header ">
+          <div class="accordion-item">
+            <div class="accordion-toggle" aria-expanded="false">
+              <div class="service-name">Service Name</div>
+              <div class="completed-date">Completed Date</div>
+              <div class="service-status">Service Status</div>
+              <div class="comments">Comments</div>
+              <div class="action">Action</div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- rows from js -->
+        <div id="tableLoader">
+          <div class="tableLoader-container">
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+
+          </div>
+        </div>
+        <div id="serviceTable"></div>
+      </div>
+    </div>
+
+
+
+
+    <div class="pagination-container">
+      <div class="pagination-content">
+        <div class="items-per-page">
+
+          <select id="itemsPerPage" class="custom-select">
+            <option value="10">10</option>
+          </select>
+
+
+          <p></p>
+        </div>
+        <ul class="pagination">
+          <li><a href="#"><img src="./images/double_right.svg" alt="" class="pagiantion-img"></a></li>
+          <li><a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img"></a></li>
+
+
+          <li>
+            <a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img double-right-rotated"></a>
+          </li>
+          <li class="hide-on-small"><a href="#"><img src="./images/double_right.svg" alt=""
+                class="pagiantion-img double-right-rotated"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Pagination ends -->
+
+    <!-- pop-up message for changing status -->
+
+
+    <div class="popup-overlay" id="popupOverlay" style="display: none;">
+      <div class="popup-content">
+        <h2 class="status-title">Status Title</h2>
+        <p id="popupMessage" class="popup-message">Are you sure want to create job?</p>
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-secondary me-2 form-btn-reset no" onclick="closePopup()">No</button>
+          <button type="button" class="btn btn-primary form-btn-save yes" onclick="confirmAction()">Yes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- pop-up message END here -->
+
+
+
+  </main>
+
+
+  <script>
+    function checkID() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const paramValue = urlParams.get('id');
+      if (paramValue) {
+        document.getElementById('URLaddservice').href = `add_service_record.html?id=${paramValue}`;
+        document.getElementById('addserviceURL').href = `add_service_record.html?id=${paramValue}`;
+      }
+    }
+    checkID()
+  </script>
+
+  <script>
+    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+    dropdownToggles.forEach((toggle) => {
+      toggle.addEventListener("click", function () {
+        const content = this.nextElementSibling;
+        const arrowIcon = this.querySelector(".arrow-icon-responsive img");
+
+        // Hide all other contents
+        document.querySelectorAll(".dropdown-content").forEach((otherContent) => {
+          if (otherContent !== content) {
+            otherContent.classList.remove("show");
+            // Remove rotation from other arrow icons
+            const otherArrowIcon = otherContent.previousElementSibling.querySelector(".arrow-icon-responsive img");
+            if (otherArrowIcon) {
+              otherArrowIcon.classList.remove("rotated");
+            }
+          }
+        });
+
+        // Toggle the current content
+        content.classList.toggle("show");
+        // Toggle the rotation of the arrow icon
+        arrowIcon.classList.toggle("rotated");
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateServices();
+    });
+
+    document.getElementById('itemsPerPage').addEventListener('change', function () {
+      const itemsPerPage = parseInt(this.value);
+      updateServices(1, itemsPerPage);
+    });
+  </script>
+</body>
+
+</html>

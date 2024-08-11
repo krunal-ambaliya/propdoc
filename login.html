@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./script/appconst.js"></script>
+    <script src="./script/script.js"></script>
+    <link rel="stylesheet" href="css/normal.css">
+    <style>
+        .container{
+            grid-template-columns: 55% 45%;
+        }
+        .info p{
+            max-width: 60%;
+        }
+        @media (max-width:800px) {
+            .container {
+                display: flex;
+                
+            }
+            .right{
+                background-color: #F7F9FF;
+            }
+            .left {
+                display: none;
+            }
+        }
+
+      
+
+        @media (max-width:500px) {
+
+            input {
+                margin-top: 0.4rem;
+            }
+
+            .container {
+                display: flex;
+            }
+
+            .left {
+                display: none;
+            }
+
+            .right {
+                width: unset;
+            }
+
+            .form-container {
+                max-width: 100%;
+            }
+
+            .heading-frm {
+                max-width: unset;
+            }
+
+            .logo {
+                width: 85%;
+                max-width: 19rem;
+            }
+
+            .heading-frm h2 {
+                font-size: 1.5rem;
+            }
+
+            .heading-frm p {
+                font-size: 0.9rem;
+                color: #676767;
+                font-weight: 600;
+            }
+
+            .frm-label {
+                font-size: 1rem;
+            }
+
+            ::placeholder {
+                font-size: 0.7rem;
+                font-weight: 600;
+            }
+
+
+            .centerPlaceholder {
+                font-size: 0.8rem;
+            }
+
+            button.sign-in.btn-color {
+                height: 2.6rem;
+                font-size: 1.2rem;
+            }
+
+            button.google-login {
+                height: 2.6rem;
+                font-size: 1.2rem;
+            }
+
+            .signup {
+                padding: 0.75rem 0 0 0;
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+
+            a.forgot-password {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="./images/login_desk.svg" alt="Login Illustration">
+            <div class="info">
+                <h2>Lorem ipsum dolor sit amet</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Morbi lacus ut netus natoque vel dui lectus felis lacus.
+                    Felis tellus tortor sagittis.</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="form-container">
+                <div class="heading-frm">
+                    <img src="images/procdoc_logo.svg" alt="Procdoc Logo" class="logo">
+                    <h2>Welcome Back <span> <img src="./images/hand.png" alt="" class="hand-wave"></span></h2>
+                    <p>Enter your details below to login</p>
+                </div>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-grp">
+
+                        <label class="frm-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="johndoe@gmail.com" required>
+                    </div>
+
+                    <label class="frm-label" for="password">Password</label>
+                    <input class="centerPlaceholder" type="password" id="password" name="password"
+                        placeholder="***********" required>
+                    
+
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+
+                    <button type="submit" class="sign-in btn-color">Sign in</button>
+
+                    <button class="google-login">
+                        <img src="images/google_logo.svg" alt="Google Logo">
+                        Login with Google
+                    </button>
+                </form>
+                <p class="signup">Don't have an account? <a href="signup.html">Signup</a></p>
+
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+
+</html>

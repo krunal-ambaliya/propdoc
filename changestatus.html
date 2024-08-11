@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Status Change Popup</title>
+    <link rel="stylesheet" href="css/main2.css">
+    <style>
+        .btn {
+            padding: 5px 65px;
+        }
+
+        .form-btn-reset {
+            box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+            border-color: #4154F1 !important;
+            background-color: white !important;
+            border: 1px solid #4153f170 !important;
+            color: #676767 !important;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .action-val {
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: #fff;
+            padding: 20px;
+            width: 31%;
+            height: 30%;
+
+            border-radius: 10px;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+
+        .form-btn-save {
+            background-color: #4154F1 !important;
+            box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+            color: white;
+        }
+
+        .justify-content-end {
+            margin-top: 11%;
+            gap: 26px;
+        }
+
+        .status-title {
+            margin-bottom: 4%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Active state -->
+    <div class="action-val action-change" data-status="active">
+        <span class="active">
+            <img src="./images/active_icon.svg" alt="status icon" class="status-icon">Active
+        </span>
+    </div>
+
+    <!-- Inactive state -->
+    <div class="action-val action-change" data-status="inactive">
+        <span class="in-active">
+            <img src="./images/in_active_icon.svg" alt="status icon" class="status-icon">In Active
+        </span>
+    </div>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <h2 class="status-title">Status Title</h2>
+            <p id="popupMessage">Do you want to change the status?</p>
+            <div class="d-flex justify-content-end">
+                <button type="reset" class="btn btn-secondary me-2 form-btn-reset no ">No</button>
+                <button type="submit" class="btn btn-primary form-btn-save yes">yes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentElement = null;
+
+        function updatePopupMessage(element) {
+            const isActive = element.querySelector('span').classList.contains('active');
+            const popupMessage = document.getElementById('popupMessage');
+
+            if (isActive) {
+                popupMessage.innerText = "Are you sure you want to inactive your status??";
+            } else {
+                popupMessage.innerText = "Are you sure you want to active your status??";
+            }
+        }
+
+        function toggleStatus() {
+            const isActive = currentElement.querySelector('span').classList.contains('active');
+
+            if (isActive) {
+                // Change to inactive
+                currentElement.innerHTML = `
+        <span class="in-active">
+          <img src="./images/in_active_icon.svg" alt="status icon" class="status-icon">In Active
+        </span>
+      `;
+            } else {
+                // Change to active
+                currentElement.innerHTML = `
+        <span class="active">
+          <img src="./images/active_icon.svg" alt="status icon" class="status-icon">Active
+        </span>
+      `;
+            }
+
+            document.getElementById('popupOverlay').style.display = 'none';
+            addClickListeners();
+        }
+
+        function addClickListeners() {
+            document.querySelectorAll('.action-change').forEach(element => {
+                element.addEventListener('click', function () {
+                    currentElement = element;
+                    updatePopupMessage(element);
+                    document.getElementById('popupOverlay').style.display = 'flex';
+                });
+            });
+        }
+
+        document.querySelector('.popup-content .no').addEventListener('click', function () {
+            document.getElementById('popupOverlay').style.display = 'none';
+        });
+
+        document.querySelector('.popup-content .yes').addEventListener('click', toggleStatus);
+
+        addClickListeners();
+    </script>
+
+</body>
+
+</html>

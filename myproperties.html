@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My properties</title>
+  <link rel="stylesheet" href="css/main2.css">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/myproperties.css">
+  <link rel="stylesheet" href="css/normal.css">
+
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script src="./script/appconst.js"></script>
+  <script src="./script/script.js"></script>
+  <style>
+    .agent-name {
+      display: block;
+      position: relative;
+
+      /* original: 40px */
+      /* line-height: 30px; */
+      /* original: 40px */
+    }
+
+    .agent-name-text {
+      vertical-align: middle;
+      background-color: #E1EDFF;
+      border-radius: 1.5rem;
+      /* original: 2rem */
+      padding: 1.5px 5.25px;
+      /* original: 2px 7px */
+      font-size: 0.675rem;
+      /* original: 0.9rem */
+      font-weight: 600;
+      /* original: 600 */
+    }
+
+    .call-icon {
+      vertical-align: middle;
+      margin-right: 3.375px;
+      /* Reduced by 10% from 3.75px */
+      padding: 1.35px 4.725px;
+      /* Reduced by 10% from 1.5px 5.25px */
+      border-radius: 1.35rem;
+      /* Reduced by 10% from 1.5rem */
+      background-color: #4154F1;
+
+    }
+
+    .arrow-icon img {
+      width: clamp(0.578rem, -1.3125rem + 1.225vw, 1.838rem);
+      /* Reduced by 30% from clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem) */
+
+
+    }
+
+
+    .active-card {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.953);
+      z-index: 20;
+      position: relative;
+    }
+
+    .card-hover:hover {
+      box-shadow: 0 3px 5px rgba(0, 6, 14, 0.953);
+    }
+
+    .pagetitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* padding: 7.5px; */
+      /* original: 10px */
+      width: 97.5%;
+    }
+
+
+    .btn {
+      padding: 5px 65px;
+      font-style: normal;
+    }
+
+    .form-btn-reset {
+      box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+      border-color: #4154F1 !important;
+      background-color: white !important;
+      border: 1px solid #4153f170 !important;
+      color: #676767 !important;
+    }
+
+    .form-btn-save {
+      background-color: #4154F1 !important;
+      box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+      color: white;
+    }
+
+    .justify-content-end {
+      margin-top: 11%;
+      gap: 26px;
+    }
+
+
+
+    .adminPropertices {
+      display: grid;
+      grid-template-columns: 1% 59% 15% 12% 8%;
+    }
+
+    .ClientPropertices {
+      display: grid;
+      grid-template-columns: 1% 61% 26% 7%;
+    }
+
+    img.action-icon.right-icon {
+      width: 1.125rem;
+      /* Reduced by 25% from 1.5rem */
+      padding: 0;
+    }
+
+    .action-icon.left-icon {
+      width: 1.125rem;
+      /* Reduced by 25% from 1.5rem */
+      padding: 0;
+    }
+
+
+    .action {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: unset;
+      gap: 0.3rem;
+    }
+
+    .arrow-icon {
+      width: unset;
+    }
+
+    .agent-accordion {
+      display: grid;
+      grid-template-columns: 2% 60% 25% 9%;
+    }
+
+
+    .accordion-container {
+      font-weight: 500;
+      font-size: clamp(0.825rem, -1.875rem + 1.75vw, 2.625rem);
+    }
+
+    .accordion-header {
+      font-weight: 700;
+
+      padding: 14px 10px;
+
+    }
+
+
+
+    /* --------- changes -----------  */
+
+    .btn {
+      padding: 6px 35px;
+      font-style: normal;
+    }
+
+    .even-num {
+      background-color: #F7F9FF;
+    }
+
+
+    @media (max-width:500px) {
+
+
+
+
+      .agent-accordion {
+        display: grid;
+        grid-template-columns: 2% 50% 50%;
+      }
+
+
+      /* .popup-content {
+        width: 90%;
+      } */
+
+      p#popupMessage {
+        font-size: 0.8rem;
+      }
+
+      .btn {
+        padding: 6px 35px;
+        font-style: normal;
+      }
+
+      .status-title {
+        font-size: 1.2rem;
+      }
+
+      .popup-content {
+        height: unset;
+      }
+
+      .action-icon-responsive {
+        width: unset;
+      }
+
+
+
+
+
+
+
+
+
+
+    }
+
+    @media (max-width: 300px) {
+      .btn {
+        padding: 6px 20px;
+        font-style: normal;
+      }
+    }
+
+    @media (max-width:740px) {
+      .agent-name-heading {
+        display: none !important;
+      }
+
+      .agent-name {
+        display: none;
+      }
+
+      .action {
+        display: none;
+      }
+
+      .adminPropertices {
+        display: grid;
+        /* grid-template-columns: 2% 60% 25% 9%; */
+        grid-template-columns: 0% 69% 24%;
+      }
+
+      .action-val.action-heading {
+        text-align: end;
+      }
+
+      .action-val {
+        justify-content: end;
+      }
+
+      .accordion-item {
+        padding: 14px;
+      }
+
+      .ClientPropertices {
+        display: grid;
+        /* grid-template-columns: 2% 60% 25% 9%; */
+        grid-template-columns: 0% 68% 26%;
+      }
+
+    }
+
+    .admin-only {
+      display: none;
+    }
+
+    .agent-name-responsive {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeAll();
+    });
+  </script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="sidebar-container"></div>
+
+
+  <main id="main-content" class="main-content">
+    <div class="agent-only">
+      <div class="pagetitle">
+        <h1>My properties</h1>
+        <div class="button-container">
+          <a class="add-properties-button" href="add_properties.html">Add Properties</a>
+        </div>
+        <div class="button-container2">
+          <a class="add-properties-button" href="add_properties.html">+</a>
+        </div>
+      </div><!--  ( agent )End Page Title -->
+    </div>
+    <div class="admin-only">
+      <div class="pagetitle">
+        <h1>Properties</h1>
+      </div><!-- ( admin ) End Page Title -->
+    </div>
+
+
+    <div class="container-div">
+      <div class="table-wrap" id="agentTable">
+
+        <div class="accordion-container accordion-header ">
+          <div class="">
+            <div class="accordion-toggle" id="accordion-toggle-th">
+              <div class="arrow-icon"></div>
+              <div class="td-address td-address-header">Address</div>
+
+              <div class="agent-name-heading admin-only">
+                <span>Agent Name</span>
+              </div>
+
+              <div class="action-val action-heading">
+                <span>Status</span>
+              </div>
+              <div class="action">Action</div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- pop-up message for changing status -->
+
+
+        <div class="popup-overlay" id="popupOverlay">
+          <div class="popup-content">
+            <input type="text" name="" id="StatusID" hidden>
+            <input type="text" name="" id="StatusActive" hidden>
+            <h2 class="status-title">Status Title</h2>
+            <p id="popupMessage" class="popup-message">Do you want to change the status?</p>
+            <div class="d-flex justify-content-end">
+              <button type="reset" class="btn btn-secondary me-2 form-btn-reset no ">No</button>
+              <button type="submit" class="btn btn-primary form-btn-save yes" onclick="statuschange()">Yes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- pop-up message END here -->
+
+
+
+
+
+        <!-- Placeholder for dynamic rows -->
+        <div id="tableLoader">
+          <div class="tableLoader-container">
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+            <div class="tableLoader-item even-tableLoader">
+              <div class="tableLoader-toggle" aria-expanded="false"></div>
+            </div>
+          </div>
+        </div>
+        <div id="accordionRows"> </div>
+
+
+      </div>
+    </div>
+
+    <div class="pagination-container">
+      <div class="pagination-content">
+        <div class="items-per-page">
+
+          <select id="itemsPerPage" class="custom-select">
+            <option value="10">10</option>
+          </select>
+
+
+          <p></p>
+        </div>
+        <ul class="pagination">
+          <li><a href="#"><img src="./images/double_right.svg" alt="" class="pagiantion-img"></a></li>
+          <li><a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img"></a></li>
+
+
+          <li>
+            <a href="#"><img src="./images/single_right.svg" alt="" class="pagiantion-img double-right-rotated"></a>
+          </li>
+          <li class="hide-on-small"><a href="#"><img src="./images/double_right.svg" alt=""
+                class="pagiantion-img double-right-rotated"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    let currentElement = null;
+
+    function clickStatus(event, id, active) {
+      console.log('id is', id)
+
+      document.getElementById('StatusID').value = id;
+      document.getElementById('StatusActive').value = active;
+
+      currentElement = event.target.closest('.action-change'); // Set the current element
+      updatePopupMessage(currentElement); // Pass the parent element to updatePopupMessage function
+      document.getElementById('popupOverlay').style.display = 'flex'; // Show the popup
+      console.log('Popup opened'); // Log when the popup is opened
+    }
+
+    function statuschange() {
+      const prop_id = document.getElementById('StatusID').value
+      const is_active = document.getElementById('StatusID').value == 'True';
+
+      console.log("for change ", prop_id);
+      $.ajax({
+        url: apiUrl + 'PropertyBook/changePropertyBookStatus?id=' + prop_id,
+        type: 'PUT',
+        contentType: 'application/json',
+        headers: {
+          "Authorization": `Bearer ${jwtToken}`
+        },
+        data: JSON.stringify({
+          is_active: is_active
+        }),
+        success: function (response) {
+          console.log(response);
+          if (response.success) {
+            toggleStatus()
+          }
+          else {
+            document.getElementById('popupOverlay').style.display = 'none';
+            addClickListeners();
+          }
+
+          if (response.success) {
+            let statusMsg = {
+              text: "successfully.",
+              duration: 3000,
+              destination: "#",
+              newWindow: true,
+              close: true,
+              gravity: "bottom",
+              position: "center",
+              stopOnFocus: false,
+              style: {
+                background: "#458746",
+              },
+            };
+            Toastify(statusMsg).showToast();
+          }
+          else {
+            let statusMsg = {
+              text: response.data.error_message,
+              duration: 3000,
+              destination: "#",
+              newWindow: true,
+              close: true,
+              gravity: "bottom",
+              position: "center",
+              stopOnFocus: false,
+              style: {
+                background: "#FF0000",
+              },
+            };
+            Toastify(statusMsg).showToast();
+          }
+
+        },
+        error: function (xhr, status, error) {
+          console.error('Error:', error);
+          document.getElementById('popupOverlay').style.display = 'none';
+          addClickListeners();
+          let statusMsg = {
+            text: 'An error occurred .',
+            duration: 3000,
+            destination: "#",
+            newWindow: true,
+            close: true,
+            gravity: "bottom",
+            position: "center",
+            stopOnFocus: false,
+            style: {
+              background: "#FF0000",
+            },
+          };
+          Toastify(statusMsg).showToast();
+        }
+      });
+    }
+
+
+    function updatePopupMessage(element) {
+      const isActive = element.querySelector('span').classList.contains('active');
+      const popupMessage = document.getElementById('popupMessage');
+
+      if (isActive) {
+        popupMessage.innerText = "Are you sure you want to inactive your status??";
+      } else {
+        popupMessage.innerText = "Are you sure you want to active your status??";
+      }
+    }
+
+    function toggleStatus() {
+      const isActive = currentElement.querySelector('span').classList.contains('active');
+
+      if (isActive) {
+        // Change to inactive
+        currentElement.innerHTML = `
+            <span class="in-active">
+                <img src="./images/in_active_icon.svg" alt="status icon" class="status-icon">In Active
+            </span>
+            `;
+      } else {
+        // Change to active
+        currentElement.innerHTML = `
+            <span class="active">
+                <img src="./images/active_icon.svg" alt="status icon" class="status-icon">Active
+            </span>
+            `;
+      }
+
+      document.getElementById('popupOverlay').style.display = 'none';
+      addClickListeners();
+    }
+
+    function addClickListeners() {
+      document.querySelectorAll('.action-change span').forEach(span => {
+        span.addEventListener('click', function (event) {
+          currentElement = event.target.closest('.action-change'); // Set the current element
+          updatePopupMessage(currentElement); // Pass the parent element to updatePopupMessage function
+          document.getElementById('popupOverlay').style.display = 'flex'; // Show the popup
+          console.log('Popup opened'); // Log when the popup is opened
+        });
+
+      });
+
+    }
+
+    document.querySelector('.popup-content .no').addEventListener('click', function () {
+      document.getElementById('popupOverlay').style.display = 'none';
+    });
+
+    // document.querySelector('.popup-content .yes').addEventListener('click', toggleStatus);
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      addClickListeners();
+      // updateAccordionClasses();
+    });
+
+  </script>
+  <!-- Template Main JS File -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateMyPropertydata();
+    });
+
+    document.getElementById('itemsPerPage').addEventListener('change', function () {
+      const itemsPerPage = parseInt(this.value);
+      updateMyPropertydata(1, itemsPerPage);
+    });
+
+    function setPage() {
+      if (userRole == 'admin') {
+        document.getElementById('accordion-toggle-th').classList.add('adminPropertices')
+      }
+      else {
+        document.getElementById('accordion-toggle-th').classList.add('ClientPropertices')
+      }
+    }
+
+    setPage()
+  </script>
+
+
+
+</body>
+
+</html>

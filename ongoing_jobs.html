@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>services Record</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/main2.css">
+    <link rel="stylesheet" href="css/dashbaord.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="./script/appconst.js"></script>
+    <script src="./script/script.js"></script>
+    <style>
+        body {
+            background: #f7f9ff !important;
+        }
+
+        ::placeholder {
+            font-weight: 500;
+        }
+
+        .container {
+            border: 3px solid #9ea4ac36;
+            border-radius: 15px;
+            width: 98%;
+            --bs-gutter-x: unset !important;
+            background-color: #fff;
+
+        }
+
+        .row {
+            max-width: 40%;
+        }
+
+        .comment-input {
+            display: flex;
+            align-items: flex-start;
+            /* Align items to the start (top) */
+            text-align: left;
+            /* Align text to the left */
+            padding: 5% 2% 24% 1%;
+        }
+
+        .select-service {
+            font-family: 'nunito';
+            -webkit-appearance: none;
+            appearance: none;
+            background: url(images/select_arrow.svg) no-repeat right;
+            background-position: calc(100% - 1rem) center;
+            padding-right: 2rem;
+            /* Adjust this value as needed */
+            font-weight: 600 !important;
+            color: #676767;
+        }
+
+        input#property-name {
+            background-color: #dddddd96;
+        }
+
+
+        .form-btn-save {
+            padding: 10px 36px;
+            color: white !important;
+            background-color: #4154F1 !important;
+            box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+            margin-top: 2%;
+            margin-right: 1%;
+            margin-bottom: 2%;
+            border-radius: 0.281rem;
+            text-wrap: nowrap;
+        }
+
+        .responsive-create {
+            display: none;
+            visibility: hidden;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        @media (max-width: 992px) {
+            /* .create-button {
+                visibility: hidden;
+            } */
+
+            .row {
+                max-width: 100%;
+            }
+
+            .compliance-box {
+                max-width: 93%;
+                padding-bottom: 1rem;
+                width: 100%;
+            }
+
+            .responsive-create {
+                visibility: visible;
+                padding: 1%;
+            }
+
+            .form-btn-create {
+                color: white !important;
+                background-color: #4154F1 !important;
+                box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+
+                margin-top: 3%;
+                width: 16%;
+                padding: 15px 0px;
+            }
+
+            .form-btn-save {
+                padding: 7.5px 0px;
+                ;
+            }
+        }
+
+
+        .form-group {
+            position: relative;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 4px 8px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trader-input {
+            border: none;
+            outline: none;
+            padding: 10px;
+            width: 100%;
+            font-weight: bold;
+            color: #1A2130;
+        }
+
+        select.trader-input option {
+            font-weight: 600;
+            color: #1A2130;
+            font-size: 0.9rem;
+        }
+
+        select.trader-input option[value=""] {
+            color: #999;
+            /* Change this color as needed */
+        }
+
+        .trader-input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .trader-input:not(:last-child) {
+            border-bottom: 1px solid #ced4da;
+        }
+
+
+        .form-label {
+            margin-bottom: 5px;
+            color: #6c757d;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .form-label {
+            margin-bottom: 0.375rem;
+            color: var(--light-black) !important;
+        }
+
+        form {
+            padding: 1.35% 0.25%;
+        }
+
+        .custom-container {
+            padding: 0 1%;
+            height: 70vh;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeAll();
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="header-container"></div>
+    <div id="sidebar-container"></div>
+
+    <main id="main-content" class="main-content">
+
+        <div class="admin-only admin-content" id="admin">
+            <div class="pagetitle">
+                <h1>Lorem ipsum dolor sit amet consectetur. //Address</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="myproperties.html">Dashboard /</a></li>
+
+                        <li class="breadcrumb-item active">On-going Jobs for Trader</li>
+                    </ol>
+                </nav>
+
+            </div><!-- End Page Title -->
+            <div class="container custom-container">
+                <form>
+                    <div class="row mb-3">
+                        <div class="col">
+
+                            <label for="Date" class="form-label">Date and Time</label>
+                            <input type="text" class="form-control border-rad input-height "
+                                placeholder="Select Date and Time" onfocus="(this.type='date')" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="firstName" class="form-label">Trader</label>
+                            <div class="form-group">
+                                <select name="select" id="serviceSelect" class="trader-input select-service">
+                                    <option value="" selected disabled hidden>Trader Name</option>
+                                    <option value="cleaning">cleaning</option>
+                                    <option value="compliance">compliance</option>
+                                    <option value="other">other</option>
+                                </select>
+                                <input type="text" class="trader-input" placeholder="Service Type">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="amount" class="form-label ">Amount</label>
+                            <input type="text" class="form-control border-rad input-height" id="amount"
+                                placeholder="Enter Amount">
+                        </div>
+
+                    </div>
+
+            </div>
+            <div class="d-flex justify-content-end create-button">
+                <button type="submit" class="btn btn-primary form-btn-save">Book Appointment</button>
+            </div>
+            </form>
+        </div>
+
+        <div class="trader-only trader-content" id="trader">
+            <div class="pagetitle">
+                <h1>Lorem ipsum dolor sit amet consectetur. //Address</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="myproperties.html">Dashboard /</a></li>
+
+                        <li class="breadcrumb-item active">On-going Jobs for Trader</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="container-ongoing container">
+                <div class="main-container">
+                    <div class="upload-container">
+                        <div class="upload-box" id="uploadBox">
+                            <img src="./images/upload_img.svg" alt="Upload Icon" class="upload-icon">
+                            <p class="upload-box-text">
+                                <span>Click to upload </span>
+                                <span>or</span>
+
+                                <span> drag and drop</span>
+                                <input type="file" id="fileInput" accept="image/*">
+                            </p>
+                        </div>
+                        <p class="file-size">Max file size: 15 MB</p>
+                    </div>
+                    <div class="preview-container" id="imagePreview">
+                        <img src="./images/preview_img.png" alt="Preview 1" id="preview1">
+                        <img src="./images/preview_img.png" alt="Preview 2" id="preview2">
+                        <img src="./images/preview_img.png" alt="Preview 3" id="preview3">
+                        <img src="./images/preview_img.png" alt="Preview 4" id="preview4">
+                        <img src="./images/preview_img.png" alt="Preview 1" id="preview1">
+                        <img src="./images/preview_img.png" alt="Preview 2" id="preview2">
+                        <img src="./images/preview_img.png" alt="Preview 3" id="preview3">
+                        <img src="./images/preview_img.png" alt="Preview 4" id="preview4">
+                        <img src="./images/preview_img.png" alt="Preview 1" id="preview1">
+                        <img src="./images/preview_img.png" alt="Preview 2" id="preview2">
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <a class="form-btn-save" href="">Save</a>
+            </div>
+
+
+
+
+        </div>
+
+    </main>
+
+    <script>
+        document.getElementById('uploadBox').addEventListener('click', function () {
+            document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', function (event) {
+            handleFiles(event.target.files);
+        });
+
+        document.getElementById('uploadBox').addEventListener('dragover', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.style.borderColor = '#007bff';
+        });
+
+        document.getElementById('uploadBox').addEventListener('dragleave', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.style.borderColor = '#ccc';
+        });
+
+        document.getElementById('uploadBox').addEventListener('drop', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.style.borderColor = '#ccc';
+            handleFiles(event.dataTransfer.files);
+        });
+
+        function handleFiles(files) {
+            const previewElements = document.querySelectorAll('#imagePreview img');
+            let fileIndex = 0;
+
+            for (const file of files) {
+                if (file.size <= 15 * 1024 * 1024) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        // Shift images to the next preview
+                        for (let i = previewElements.length - 1; i > 0; i--) {
+                            previewElements[i].src = previewElements[i - 1].src;
+                        }
+                        // Set the latest uploaded image to the first preview
+                        previewElements[0].src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+
+                    fileIndex++;
+                    // Stop if more files are provided than preview slots
+                    if (fileIndex >= previewElements.length) {
+                        break;
+                    }
+                } else {
+                    alert('File is too large: ' + file.name);
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

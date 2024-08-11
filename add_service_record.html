@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>services Record</title>
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/main2.css">
+    <link rel="stylesheet" href="css/normal.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="./script/appconst.js"></script>
+    <script src="./script/script.js"></script>
+    <style>
+        body {
+            background: #f7f9ff !important;
+        }
+
+        .form-control {
+            color: initial;
+            /* Initial color */
+        }
+
+        ::placeholder {
+            font-weight: 500;
+        }
+
+        .container {
+            border: 3px solid #9ea4ac36;
+            border-radius: 15px;
+            width: 98%;
+            height: 100%;
+            justify-content: space-between;
+            flex-direction: column;
+            display: flex;
+            background-color: #fff;
+        }
+
+
+        .row {
+            max-width: 40%;
+        }
+
+        @media (max-width: 992px) {
+            /* .create-button {
+                visibility: hidden;
+            } */
+
+            .row {
+                max-width: 100%;
+            }
+        }
+
+        .comment-input {
+            display: flex;
+            align-items: flex-start;
+            /* Align items to the start (top) */
+            text-align: left;
+            /* Align text to the left */
+            /* padding: 5% 2% 24% 1%; */
+        }
+
+        .comment-input::placeholder {
+            text-align: left;
+
+            display: block;
+            /* Use block to ensure alignment works properly */
+        }
+
+        .select-service {
+            font-family: 'nunito';
+            -webkit-appearance: none;
+            appearance: none;
+            background: url(images/select_arrow.svg) no-repeat right;
+            background-position: calc(100% - 1rem) center;
+            padding-right: 2rem;
+            /* Adjust this value as needed */
+            font-weight: 600 !important;
+            color: #676767;
+        }
+
+        input#property-name {
+            background-color: #dddddd96;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .compliance-box {
+            margin-left: 1%;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            width: 38%;
+        }
+
+        .checkbox-label {
+            width: auto;
+            /* Make each label take the necessary width */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            /* Adjust the size as needed */
+            height: 20px;
+            /* Adjust the size as needed */
+            background-color: #F7F9FF;
+            border: 1px solid #4154F1;
+            border-radius: 4px;
+            /* Add border radius */
+            position: relative;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked {
+            background-color: #4154F1;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked:before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 4px;
+            /* Adjust the size of the check tick */
+            height: 8px;
+            /* Adjust the size of the check tick */
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        #compliacne-label {
+            margin-left: 1%;
+        }
+
+        .form-btn-save {
+            padding: 10px 36px;
+            color: white !important;
+            background-color: #4154F1 !important;
+            box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+        }
+
+        .responsive-create {
+            display: none;
+            visibility: hidden;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        @media (max-width: 992px) {
+            .create-button {
+                visibility: hidden;
+            }
+
+
+            .compliance-box {
+                max-width: 93%;
+                padding-bottom: 1rem;
+                width: 100%;
+            }
+
+            .responsive-create {
+                visibility: visible;
+                padding: 1%;
+            }
+
+            .form-btn-create {
+                color: white !important;
+                background-color: #4154F1 !important;
+                box-shadow: 3px 4px 6px rgb(0 0 0 / 13%);
+
+                margin-top: 3%;
+                width: 35%;
+                padding: 12px 0px;
+
+            }
+        }
+
+        @media (max-width:500px) {
+            .row {
+                max-width: 100%;
+            }
+        }
+
+
+
+        .create-button {
+            /* position: absolute; */
+            justify-content: flex-end;
+            margin-bottom: 2%;
+            /* display: flex; */
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .form-label {
+            margin-bottom: 5px;
+            color: #6c757d;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .form-label {
+            margin-bottom: 0.375rem;
+            color: var(--light-black) !important;
+        }
+
+        .form-group {
+            position: relative;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            /* padding: 4px 8px; */
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .select.trader-input option {
+            font-weight: 600;
+            color: #1A2130;
+            font-size: 0.9rem;
+        }
+
+        .select.trader-input option[value=""] {
+            color: #999;
+            /* Change this color as needed */
+        }
+
+        .trader-input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .trader-input:not(:last-child) {
+            border-bottom: 1px solid #ced4da;
+        }
+
+        .select-service {
+            font-family: 'nunito';
+            -webkit-appearance: none;
+            appearance: none;
+            background: url(images/select_arrow.svg) no-repeat right;
+            background-position: calc(100% - 1rem) center;
+            padding-right: 2rem;
+            /* Adjust this value as needed */
+            font-weight: 600 !important;
+            color: #676767;
+        }
+
+        .select-service option {
+            text-indent: 0;
+            padding-left: 0;
+        }
+
+        .custom-select-container {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .custom-select-2 {
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        .select-selected {
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            /* background-color: #f9f9f9;
+    border: 1px solid #ccc; */
+            /* border-radius: 2rem 2rem 0 0; */
+
+
+        }
+
+
+        .select-items {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            /* border-top: none; */
+            z-index: 99;
+            width: 100%;
+            /* border-radius: 0rem 0rem 2rem 2rem; */
+            display: none;
+            overflow: hidden;
+        }
+
+        .select-items div {
+            padding: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+            border-top: 1px solid #CAD1DC;
+        }
+
+        .select-items div:hover {
+            background-color: #ddd;
+        }
+
+        .select-selected:after {
+            content: "";
+            position: absolute;
+            right: 10px;
+            top: 20%;
+            /* transform: translateY(-50%) scale(0.6); */
+            width: 1rem;
+            height: 1rem;
+            background-image: url(./images/select_arrow.svg);
+            /* background-size: cover; */
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .line-between {
+            opacity: 0;
+            /* Hide by default */
+            transition: opacity 0.3s ease;
+            /* Smooth transition for opacity changes */
+            margin: 0.3rem 0 0.1rem 0;
+        }
+
+        .select-arrow-active .line-between {
+            opacity: 1;
+            /* Show when dropdown is active or item is selected */
+        }
+
+
+        .property-bold {
+            font-weight: 650;
+            font-size: 0.89rem;
+            color: #1A2130;
+            font-family: 'nunito';
+        }
+
+        .property-light {
+            font-size:0.85rem;
+            color: #676767;
+            font-family: 'nunito';
+        }
+
+        #propertiesList {
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        #checkboxes {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 0.5rem;
+        }
+
+        @media (max-width:650px) {
+            #checkboxes {
+                grid-template-columns: auto auto;
+            }
+        }
+
+        @media (max-width:450px) {
+            #checkboxes {
+                grid-template-columns: auto;
+            }
+        }
+
+        .dropProperticeItem hr {
+            margin: 0;
+        }
+
+        .service-record {
+            padding: 1.35% 0;
+        }
+
+        #checkboxes label {
+            color: #676767;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .mb-3 {
+            margin-bottom: unset;
+        }
+
+        textarea::placeholder {
+            font-weight: 550;
+            font-size: 0.8rem;
+            font-family: 'nunito';
+        }
+
+       .property-focus {
+    border-radius: 0.5rem;
+    /* background-color: black; */
+    box-shadow: 0 0 0 .19rem rgba(13, 110, 253, .25);
+}
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeAll();
+        });
+    </script>
+
+</head>
+
+<body>
+    <main id="main-content" class="main-content">
+        <div class="pagetitle">
+            <h1>Add Service Record</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="myproperties.html">My properties</a></li>
+                    <span class="breadcrumb-devider">/</span>
+                    <li class="breadcrumb-item active">add service records</li>
+                </ol>
+            </nav>
+
+        </div><!-- End Page Title -->
+
+        <div class="container custom-container">
+            <form class="service-record">
+
+
+                <div class="row mb-3" id="selectPropertices">
+                    <div class="col">
+                        <label for="firstName" class="form-label">Property</label>
+                        <div class="form-group">
+                            <div class="custom-select-container ">
+                                <div class="custom-select-2">
+
+                                    <div class="select-selected" id="seletedProprtices">
+                                        select
+                                    </div>
+                                    <div class="select-items" id="propertiesList">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                document.getElementById('custom-select-2').addEventListener('click', function() {
+                                    this.classList.add('property-focus');
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3" id="datePicker" style="display: none;">
+                    <div class="col">
+                        <label for="dob" class="form-label">Request on:</label>
+                        <!-- <div style="display: flex; "> -->
+                        <input type="date" class="form-control" id="dob"
+                            onclick="document.getElementById('dob').showPicker();">
+                        <div id="dateError" class="error-msg"></div>
+                        <!-- <img src="images/dob_icon.svg" alt="Calendar Icon" class="dobimg custom-date-img"
+                                style=" cursor: pointer; z-index: 3;" id="custom-date-img"> -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="serviceSelect" class="form-label">Service Type</label>
+                        <select name="select" id="serviceSelect"
+                            class="form-control border-rad input-height select-service">
+                            <option value="" selected disabled hidden>Select service type</option>
+                            <!-- Options will be added here dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 ml-1">
+                    <label for="compliance-label" class="form-label hidden" id="compliance-label">Compliance</label>
+
+                    <div id="checkboxes" class="hidden">
+                        <!-- Checkboxes will be added here dynamically -->
+                    </div>
+                    <div class="row mb-3 hidden" id="text-box">
+                        <div class="col">
+                            <label for="firstName" class="form-label">Textbox</label>
+                            <input type="text" class="form-control border-rad input-height" id="firstName"
+                                placeholder="Enter your text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="Comments " class="form-label ">Comments</label>
+                        <textarea class="form-control border-rad input-height comment-input" id="Comments"
+                            placeholder="Enter Your Comments" rows="8" style="resize: none;"></textarea>
+
+
+                    </div>
+
+                </div>
+
+
+            </form>
+            <div class="d-flex justify-content-end create-button">
+                <button type="submit" class="btn btn-primary form-btn-save" onclick="saveProprtices()">Create</button>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end responsive-create">
+            <button type="submit" class="btn btn-primary  form-btn-create" onclick="saveProprtices()">Create</button>
+        </div>
+    </main>
+    <div id="header-container"></div>
+    <div id="sidebar-container"></div>
+
+
+
+
+    <script>
+        function selectPropertyById(propId) {
+            // Get the container and selected elements
+            const select = document.querySelector(".custom-select-2");
+            const selected = select.querySelector(".select-selected");
+            const items = select.querySelector(".select-items");
+
+            // Find the item that matches the given propId
+            const targetItem = Array.from(items.children).find(item => {
+                return item.querySelector('input[type="text"]').value === propId;
+            });
+
+            if (targetItem) {
+                // Update the selected div with the corresponding item details
+                const propertyName = targetItem.querySelector(".property-light").textContent;
+                const addressLine1 = targetItem.querySelector(".property-bold").textContent;
+
+                selected.innerHTML = `
+                    <input type="text" hidden value='${propId}'>
+                    <span class="property-bold">${addressLine1}</span>
+                    <br>
+                    <hr class="line-between">
+                    <span class="property-light">${propertyName}</span>
+                 `;
+
+                // Close the dropdown
+                items.style.display = "none";
+                selected.classList.add("select-arrow-active");
+            }
+        }
+
+
+        function checkID() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const paramValue = urlParams.get('id');
+            if (paramValue) {
+                document.getElementById('datePicker').style.display = 'block'
+            }
+        }
+        checkID();
+    </script>
+
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var select = document.querySelector(".custom-select-2");
+            var selected = select.querySelector(".select-selected");
+            var items = select.querySelector(".select-items");
+            var lines = select.querySelectorAll(".line-between");
+
+            function updateHrVisibility() {
+                // Show <hr> if the dropdown is open or an item is selected
+                if (items.style.display === "block" || selected.innerHTML !== items.querySelector(".property-light").innerHTML) {
+                    selected.classList.add("select-arrow-active");
+                } else {
+                    selected.classList.remove("select-arrow-active");
+                }
+            }
+
+            selected.addEventListener("click", function () {
+                if (items.style.display === "block") {
+                    items.style.display = "none";
+                    selected.classList.remove("select-arrow-active");
+                } else {
+                    items.style.display = "block";
+                    selected.classList.add("select-arrow-active");
+                }
+                updateHrVisibility();
+            });
+
+            items.addEventListener("click", function (e) {
+                if (e.target.tagName === "DIV" || e.target.tagName === "SPAN") {
+                    selected.innerHTML = e.target.closest("div").innerHTML;
+
+                    items.style.display = "none";
+                    selected.classList.remove("select-arrow-active");
+                    updateHrVisibility();
+                }
+            });
+
+            document.addEventListener("click", function (e) {
+                if (!select.contains(e.target)) {
+                    items.style.display = "none";
+                    selected.classList.remove("select-arrow-active");
+                    updateHrVisibility();
+                }
+            });
+
+            // Initialize hr visibility based on default state
+            updateHrVisibility();
+        });
+
+
+    </script> -->
+
+
+    <!-- start Service Type -->
+
+    <script>
+        function populateForm(data) {
+            if (!data.success || !data.listData) return;
+
+            const serviceSelect = document.getElementById('serviceSelect');
+            const checkboxesContainer = document.getElementById('checkboxes');
+            const complianceLabel = document.getElementById('compliance-label');
+
+
+            const tradeTypes = new Set();
+            const tradeItemsByParent = {};
+
+            // Filter and collect data
+            data.listData.forEach(item => {
+                if (item.isTree === "False") {
+                    tradeTypes.add(item.tradeType);
+                }
+                if (item.parenttradeType) {
+                    if (!tradeItemsByParent[item.parenttradeType]) {
+                        tradeItemsByParent[item.parenttradeType] = [];
+                    }
+                    tradeItemsByParent[item.parenttradeType].push(item);
+                }
+            });
+
+            // Populate dropdown with tradeTypes where isTree is "False"
+            tradeTypes.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type.toLowerCase();
+                option.textContent = type;
+                serviceSelect.appendChild(option);
+            });
+
+            // Handle dropdown change event
+            serviceSelect.addEventListener('change', (event) => {
+                const selectedValue = event.target.value;
+
+                const complianceLabelName = document.getElementById('compliance-label');
+                complianceLabelName.innerHTML = event.target.value;
+                // Clear previous checkboxes
+                checkboxesContainer.innerHTML = '';
+
+                if (selectedValue) {
+                    complianceLabel.classList.remove('hidden');
+                    checkboxesContainer.classList.remove('hidden');
+
+                    // Find items based on the selected tradeType
+                    const selectedTradeType = Array.from(tradeTypes).find(type => type.toLowerCase() === selectedValue);
+
+                    if (selectedTradeType && tradeItemsByParent[selectedTradeType]) {
+                        tradeItemsByParent[selectedTradeType].forEach(item => {
+                            const label = document.createElement('label');
+                            label.className = 'checkbox-label';
+
+                            const input = document.createElement('input');
+                            input.type = 'checkbox';
+                            input.value = item.availableTradeId; // Checkbox value set to availableTradeId
+
+                            label.appendChild(input);
+
+                            // Display the tradeType as label text
+                            const text = document.createTextNode(item.tradeType);
+                            label.appendChild(text);
+
+                            checkboxesContainer.appendChild(label);
+                        });
+                    } else {
+                        complianceLabel.classList.add('hidden');
+                        checkboxesContainer.classList.add('hidden');
+                    }
+                } else {
+                    complianceLabel.classList.add('hidden');
+                    checkboxesContainer.classList.add('hidden');
+                }
+            });
+        }
+
+        function selectAPI() {
+            $.ajax({
+                url: `${apiUrl}AvailableTrade/serviceTypes`, // Replace with your API endpoint
+                type: 'GET',
+                contentType: 'application/json',
+                headers: {
+                    "Authorization": `Bearer ${jwtToken}`
+                },
+                success: function (response) {
+
+                    // console.log("response for select", response.listData);
+                    populateForm(response)
+                },
+                error: function (xhr, status, error) {
+                    response = {
+                        "success": true,
+                        "listData": [
+                            {
+                                "availableTradeId": "9182c79b-7c98-4fdb-84a6-28c6da25dd14",
+                                "parenttradeType": "",
+                                "tradeType": "Cleaning",
+                                "expiryInDays": "30",
+                                "isTree": "False",
+                                "createdAt": "20-07-2023 10:00:00",
+                                "updatedAt": "20-07-2023 10:00:00",
+                                "remarks": "Regular cleaning service"
+                            },
+                            {
+                                "availableTradeId": "068d9cd4-ed07-4024-9efd-cce02fd27f7f",
+                                "parenttradeType": "",
+                                "tradeType": "Maintenance",
+                                "expiryInDays": "60",
+                                "isTree": "False",
+                                "createdAt": "21-07-2023 11:00:00",
+                                "updatedAt": "21-07-2023 11:00:00",
+                                "remarks": "General maintenance service"
+                            },
+                            {
+                                "availableTradeId": "a8908bb5-d2ab-42d2-8a26-e4ec5244d059",
+                                "parenttradeType": "",
+                                "tradeType": "Repair",
+                                "expiryInDays": "90",
+                                "isTree": "False",
+                                "createdAt": "22-07-2023 12:00:00",
+                                "updatedAt": "22-07-2023 12:00:00",
+                                "remarks": "Minor repair service"
+                            },
+                            {
+                                "availableTradeId": "135c5431-23cc-4b36-98d9-b7b69ce2a50b",
+                                "parenttradeType": "",
+                                "tradeType": "Maintenance",
+                                "expiryInDays": "60",
+                                "isTree": "False",
+                                "createdAt": "26-07-2024 11:00:00",
+                                "updatedAt": "26-07-2024 11:00:00",
+                                "remarks": "Detailed maintenance service"
+                            },
+                            {
+                                "availableTradeId": "a0edaba3-2d38-4081-8238-f933265bfe44",
+                                "parenttradeType": "",
+                                "tradeType": "Plumbing",
+                                "expiryInDays": "30",
+                                "isTree": "False",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Standard plumbing service"
+                            },
+                            {
+                                "availableTradeId": "14e519a4-5d30-488d-bb44-3216f3c7cff0",
+                                "parenttradeType": "",
+                                "tradeType": "Electrical Inspection",
+                                "expiryInDays": "60",
+                                "isTree": "False",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Routine electrical inspection"
+                            },
+                            {
+                                "availableTradeId": "4064dc82-618b-44e5-9cef-0aec7c21d836",
+                                "parenttradeType": "",
+                                "tradeType": "Landscaping",
+                                "expiryInDays": "90",
+                                "isTree": "False",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Complete garden landscaping service"
+                            },
+                            {
+                                "availableTradeId": "32d4b407-91b4-48c4-ac58-85ebac960fcb",
+                                "parenttradeType": "",
+                                "tradeType": "Home Inspection",
+                                "expiryInDays": "90",
+                                "isTree": "False",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Comprehensive home inspection service"
+                            },
+                            {
+                                "availableTradeId": "a51e2387-c17c-4011-abe5-cafa20bd04d1",
+                                "parenttradeType": "",
+                                "tradeType": "Roof Cleaning",
+                                "expiryInDays": "60",
+                                "isTree": "False",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Roof cleaning to remove moss and debris"
+                            },
+                            {
+                                "availableTradeId": "b875af00-3458-44ed-93fa-04c12c231137",
+                                "parenttradeType": "",
+                                "tradeType": "Pest Control",
+                                "expiryInDays": "30",
+                                "isTree": "False",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Pest control for common household pests"
+                            },
+                            {
+                                "availableTradeId": "6f2a18ff-89d8-4419-906a-b9cd30317f70",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Window Cleaning",
+                                "expiryInDays": "30",
+                                "isTree": "True",
+                                "createdAt": "28-07-2024 10:00:00",
+                                "updatedAt": "28-07-2024 10:00:00",
+                                "remarks": "Window cleaning service"
+                            },
+                            {
+                                "availableTradeId": "343583a7-b899-484b-af33-4b85fbbc7bcb",
+                                "parenttradeType": "Maintenance",
+                                "tradeType": "AC Maintenance",
+                                "expiryInDays": "60",
+                                "isTree": "True",
+                                "createdAt": "29-07-2024 11:00:00",
+                                "updatedAt": "29-07-2024 11:00:00",
+                                "remarks": "Air conditioner maintenance"
+                            },
+                            {
+                                "availableTradeId": "e5c03894-bb90-41f0-b22c-f0958ee5b958",
+                                "parenttradeType": "Repair",
+                                "tradeType": "Plumbing Repair",
+                                "expiryInDays": "90",
+                                "isTree": "True",
+                                "createdAt": "30-07-2024 12:00:00",
+                                "updatedAt": "30-07-2024 12:00:00",
+                                "remarks": "Plumbing repair service"
+                            },
+                            {
+                                "availableTradeId": "56284c18-2e9f-4ad6-a8d4-ecca0c086a97",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Deep cleaning service",
+                                "expiryInDays": "45",
+                                "isTree": "True",
+                                "createdAt": "25-07-2024 10:00:00",
+                                "updatedAt": "25-07-2024 10:00:00",
+                                "remarks": "Deep cleaning service"
+                            },
+                            {
+                                "availableTradeId": "195dff7b-8921-4bf5-a9af-7fe81fc3a56a",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Deep Cleaning",
+                                "expiryInDays": "45",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Advanced cleaning for large areas"
+                            },
+                            {
+                                "availableTradeId": "ced3f0ee-6367-4303-91b9-1e80d6d03f80",
+                                "parenttradeType": "Maintenance",
+                                "tradeType": "HVAC Maintenance",
+                                "expiryInDays": "60",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Regular HVAC maintenance"
+                            },
+                            {
+                                "availableTradeId": "14c044a5-e2d4-4eb5-9bbe-adc672969415",
+                                "parenttradeType": "Electrical Inspection",
+                                "tradeType": "Electrical Repair",
+                                "expiryInDays": "30",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Emergency electrical repairs"
+                            },
+                            {
+                                "availableTradeId": "31a6e746-163f-4db3-ae21-3dd0e6ae7c60",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Window Washing",
+                                "expiryInDays": "30",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Window washing for high-rise buildings"
+                            },
+                            {
+                                "availableTradeId": "aadd775a-5344-4211-978f-baa40fb2d2ad",
+                                "parenttradeType": "Landscaping",
+                                "tradeType": "Seasonal Garden Prep",
+                                "expiryInDays": "45",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Preparation of garden for the season"
+                            },
+                            {
+                                "availableTradeId": "c6375831-4b13-40ed-8a03-d2a237802de3",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Pool Cleaning",
+                                "expiryInDays": "15",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:01:56",
+                                "updatedAt": "01-08-2024 00:01:56",
+                                "remarks": "Regular pool cleaning service"
+                            },
+                            {
+                                "availableTradeId": "9f1d9974-bd8e-4dd1-b175-f9425dd69b23",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Upholstery Cleaning",
+                                "expiryInDays": "45",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Deep cleaning of upholstery and fabrics"
+                            },
+                            {
+                                "availableTradeId": "ce90fda9-5d08-4874-82c3-218311859af9",
+                                "parenttradeType": "Maintenance",
+                                "tradeType": "Air Duct Cleaning",
+                                "expiryInDays": "60",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Cleaning of air ducts to improve air quality"
+                            },
+                            {
+                                "availableTradeId": "c667f0c6-509e-4213-9dbd-62a5b257e80c",
+                                "parenttradeType": "Electrical Inspection",
+                                "tradeType": "Electrical Installation",
+                                "expiryInDays": "30",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Installation of new electrical systems"
+                            },
+                            {
+                                "availableTradeId": "0c50955f-3097-414f-8a08-3e46bc7c4950",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Power Washing",
+                                "expiryInDays": "30",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "High-pressure power washing for surfaces"
+                            },
+                            {
+                                "availableTradeId": "1b2053c0-85ae-442d-814f-6d5655ab07fe",
+                                "parenttradeType": "Landscaping",
+                                "tradeType": "Garden Irrigation",
+                                "expiryInDays": "45",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Installation and maintenance of garden irrigation systems"
+                            },
+                            {
+                                "availableTradeId": "0ac0ec54-bd49-442f-8879-49619e9f482c",
+                                "parenttradeType": "Maintenance",
+                                "tradeType": "Hot Tub Maintenance",
+                                "expiryInDays": "60",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Regular maintenance for hot tubs and spas"
+                            },
+                            {
+                                "availableTradeId": "5cc3b51f-7985-493a-bc41-388979322d8b",
+                                "parenttradeType": "Landscaping",
+                                "tradeType": "Concrete Sealing",
+                                "expiryInDays": "90",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Sealing concrete surfaces to prevent damage"
+                            },
+                            {
+                                "availableTradeId": "03d09470-7000-4e19-b417-460db5da732c",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Solar Panel Cleaning",
+                                "expiryInDays": "30",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Cleaning of solar panels to ensure efficiency"
+                            },
+                            {
+                                "availableTradeId": "2bba01f8-77b5-4306-b91b-1eb616af4f71",
+                                "parenttradeType": "Cleaning",
+                                "tradeType": "Gutter Cleaning",
+                                "expiryInDays": "30",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Cleaning gutters to prevent blockages"
+                            },
+                            {
+                                "availableTradeId": "31fabb1e-4356-4151-b582-2e12dfb747c4",
+                                "parenttradeType": "Landscaping",
+                                "tradeType": "Deck Maintenance",
+                                "expiryInDays": "60",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Maintenance and care for outdoor decks"
+                            },
+                            {
+                                "availableTradeId": "f919297e-ebd2-4a84-99c9-8cd489605620",
+                                "parenttradeType": "Landscaping",
+                                "tradeType": "Fence Repair",
+                                "expiryInDays": "60",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Repair and restoration of fences"
+                            },
+                            {
+                                "availableTradeId": "8fc6e184-f903-4314-acc3-4c47a16a51be",
+                                "parenttradeType": "Maintenance",
+                                "tradeType": "Sump Pump Installation",
+                                "expiryInDays": "90",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Installation and maintenance of sump pumps"
+                            },
+                            {
+                                "availableTradeId": "0b35ad23-9ef5-4963-ba1c-bcc6fcd8eab1",
+                                "parenttradeType": "Maintenance",
+                                "tradeType": "Insulation Installation",
+                                "expiryInDays": "90",
+                                "isTree": "True",
+                                "createdAt": "01-08-2024 00:02:13",
+                                "updatedAt": "01-08-2024 00:02:13",
+                                "remarks": "Installation of insulation in walls and attics"
+                            }
+                        ]
+                    }
+
+
+                    populateForm(response)
+                    console.error('Error:', error);
+                }
+            });
+        }
+        selectAPI()
+    </script>
+    <!-- end Service Type -->
+    <!-- start propertices data -->
+    <script>
+        UpdatePropertyData();
+    </script>
+    <!-- save propertices -->
+    <script>
+        function getCheckedValues() {
+            const checkedValues = [];
+            const checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                checkedValues.push(checkbox.value);
+            });
+            console.log(checkedValues); // Output the array to the console
+            return checkedValues;
+        }
+        function saveProprtices() {
+            const propertices = document.getElementById('seletedProprtices');
+            const prop_id = propertices.querySelector('input[type="text"]').value;
+            const requested_on = document.getElementById('dob').value || null
+            const comments = document.getElementById('Comments').value
+            const list_available_trade_id = getCheckedValues();
+
+
+
+            const apiData = {
+
+                prop_id,
+                requested_on,
+                comments,
+                list_available_trade_id
+            }
+            console.log("response for add", apiData)
+            $.ajax({
+                url: `${apiUrl}Trade`,
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    apiData
+                ),
+                headers: {
+                    "Authorization": `Bearer ${jwtToken}`
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response.success) {
+                        let statusMsg = {
+                            text: "Password updated successfully.",
+                            duration: 3000,
+                            destination: "#",
+                            newWindow: true,
+                            close: true,
+                            gravity: "bottom",
+                            position: "center",
+                            stopOnFocus: false,
+                            style: {
+                                background: "#458746",
+                            },
+                        };
+                        Toastify(statusMsg).showToast();
+                    }
+                    else {
+                        let statusMsg = {
+                            text: response.data.error_message,
+                            duration: 3000,
+                            destination: "#",
+                            newWindow: true,
+                            close: true,
+                            gravity: "bottom",
+                            position: "center",
+                            stopOnFocus: false,
+                            style: {
+                                background: "#FF0000",
+                            },
+                        };
+                        Toastify(statusMsg).showToast();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                    // alert("data not add")
+                    let statusMsg = {
+                        text: 'An error occurred.',
+                        duration: 3000,
+                        destination: "#",
+                        newWindow: true,
+                        close: true,
+                        gravity: "bottom",
+                        position: "center",
+                        stopOnFocus: false,
+                        style: {
+                            background: "#FF0000",
+                        },
+                    };
+                    Toastify(statusMsg).showToast();
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>
