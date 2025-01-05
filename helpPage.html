@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Need Help - Property Management Portal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/main2.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Vendor JS Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./script/appconst.js"></script>
+    <script src="./script/script.js"></script>
+    <link rel="stylesheet" href="css/normal.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeAll();
+        });
+    </script>
+    <style>
+        body {
+            all: unset;
+        }
+
+        .header-help {
+            background-color: #4154f1;
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .container h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .container p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .faq {
+            margin: 2rem 0;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-item h3 {
+            color: #2c3e50;
+        }
+
+        .faq-item p {
+            margin: 0.5rem 0 0;
+        }
+
+        .contact {
+            margin-top: 2rem;
+        }
+
+        .contact h3 {
+            color: #2c3e50;
+        }
+
+        .contact a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <div class="header-help">
+        <h1>Need Help?</h1>
+        <p>We're here to assist you with any questions or concerns.</p>
+    </div>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq">
+            <div class="faq-item">
+                <h3>How do I register a new property?</h3>
+                <p>You can register a new property by navigating to the "Add Property" section in your dashboard.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I contact customer support?</h3>
+                <p>Customer support is available via the "Contact Us" page or by emailing us directly at support@propertyportal.com.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How can I update my property details?</h3>
+                <p>To update property details, go to your dashboard, select the property, and click "Edit Details."</p>
+            </div>
+        </div>
+
+        <div class="contact">
+            <h3>Still need help?</h3>
+            <p>If your question isn't answered above, feel free to reach out to us:</p>
+            <p>Email: <a href="mailto:support@propertyportal.com">support@propertyportal.com</a></p>
+            <p>Phone: +1 (800) 123-4567</p>
+        </div>
+    </div>
+</body>
+</html>
