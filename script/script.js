@@ -3072,7 +3072,17 @@ function addDashAgentProp(rows, totalCount, currentPage, itemsPerPage) {
 
   updatePaginationControls(totalCount, currentPage, itemsPerPage, updateDashAgentprop);
 }
-
+function redirectLoginPage(role) {
+  if (role == 'trader') {
+    window.location.href = 'login.html'
+  }
+  else if (role == 'admin') {
+    window.location.href = 'login.html'
+  }
+  else {
+    window.location.href = 'login.html'
+  }
+}
 function LogoutUser() {
   console.log("inside logut")
   localStorage.clear();
