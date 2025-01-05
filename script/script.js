@@ -3072,3 +3072,10 @@ function addDashAgentProp(rows, totalCount, currentPage, itemsPerPage) {
 
   updatePaginationControls(totalCount, currentPage, itemsPerPage, updateDashAgentprop);
 }
+
+function LogoutUser() {
+  console.log("inside logut")
+  localStorage.clear();
+  sessionStorage.clear();
+  redirectLoginPage(userRole)
+}
