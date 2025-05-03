@@ -37,4 +37,4 @@ Made with ❤️ by **Krunal**
 
 📬 **Telegram**: [@krues](https://t.me/krues)
 
-For help, feedback, or more Telegram bot projects, feel free to reach out!
+For help, feedback, or more  projects, feel free to reach out!
